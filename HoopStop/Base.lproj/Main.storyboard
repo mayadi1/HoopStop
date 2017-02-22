@@ -142,6 +142,9 @@
                                     <navigationItem title="Sign Up" id="K2V-5a-aEJ">
                                         <barButtonItem key="leftBarButtonItem" title="OK" id="bf2-Yf-k5S">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="okButtonPressed:" destination="xdZ-YV-Dyn" id="Jl1-e6-aBT"/>
+                                            </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="QMq-dH-9uW">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -211,6 +214,7 @@
                     <connections>
                         <outlet property="email" destination="j8a-V0-iyz" id="zU5-Bh-Wu0"/>
                         <outlet property="name" destination="IqV-gQ-oT9" id="QNy-2W-qyM"/>
+                        <outlet property="okButton" destination="bf2-Yf-k5S" id="VPp-kk-NXV"/>
                         <outlet property="password" destination="Zia-v9-LxC" id="yEd-ZY-NKC"/>
                         <outlet property="profileImage" destination="7hA-ph-WR3" id="yZ5-2q-nhW"/>
                         <outlet property="username" destination="EDk-5n-vMz" id="VxT-pv-ahI"/>

@@ -12,6 +12,7 @@ import FirebaseDatabase
 
 class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var okButton: UIBarButtonItem!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var username: UITextField!
@@ -21,6 +22,10 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UI
     var chechPhoto: Bool?
     let imagePicker = UIImagePickerController()
     var selectedPhoto: UIImage!
+    var storageRef: FIRStorageReference{
+        return FIRStorage.storage().reference()
+    }
+    var fileUrl: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +46,64 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UI
         self.dismiss(animated: false) { 
             
         }
+    }
+    @IBAction func okButtonPressed(_ sender: Any) {
+        self.okButton.isEnabled = false
+        var data = Data()
+        data = UIImageJPEGRepresentation(self.profileImage.image!, 0.1)!
+        FIRAuth.auth()?.createUser(withEmail: self.email.text!, password: self.password.text!, completion: { (user, error) in
+            if let error = error {
+                let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+                    
+                }
+                alertController.addAction(OKAction)
+                self.present(alertController, animated: true, completion:nil)
+                self.okButton.isEnabled = true
+                return
+            }else{
+                FIRAuth.auth()?.signIn(withEmail: self.email.text!, password: self.password.text!) { (user, error) in
+                }
+                let rootRef = FIRDatabase.database().reference()
+                rootRef.child("users").child("\(user!.uid)").child("name").setValue(self.name.text)
+                rootRef.child("users").child("\(user!.uid)").child("username").setValue(self.username.text)
+                rootRef.child("users").child("\(user!.uid)").child("useruid").setValue("\(user!.uid)")
+                rootRef.child("users").child("\(user!.uid)").child("useremail").setValue(self.email.text)
+                rootRef.child("users").child("\(user!.uid)").child("valid").setValue("yes")
+                let changeRequest = user?.profileChangeRequest()
+                changeRequest?.displayName = self.name.text
+                changeRequest?.commitChanges(completion: { (error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                        return
+                    }
+                })
+                let filePath = "profileImage/\(user!.uid)"
+                let metadata =  FIRStorageMetadata()
+                metadata.contentType = "image/jpeg"
+                self.storageRef.child(filePath).put(data, metadata: metadata, completion: { (metadata, error) in
+                    if let error = error{
+                        print("\(error)")
+                        return
+                    }
+                    self.fileUrl = metadata?.downloadURLs![0].absoluteString
+                    rootRef.child("users").child("\(user!.uid)").child("userProfilePic").setValue(self.fileUrl)
+                    let changeREquestPhoto = user!.profileChangeRequest()
+                    changeREquestPhoto.photoURL = URL(string: self.fileUrl)
+                    changeREquestPhoto.commitChanges(completion: { (error) in
+                        if let error = error{
+                            print(error.localizedDescription)
+                            return
+                        }else{
+                            print("Profile Updated")
+                            self.dismiss(animated: true, completion: {})
+                        }
+                    })
+                    
+                })
+            }
+    })
+
     }
     
     func selectPhoto(_ tap: UITapGestureRecognizer) {
@@ -75,6 +138,7 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UI
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
+    
 }
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
