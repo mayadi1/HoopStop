@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import SVProgressHUD
 
 class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -30,7 +31,6 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-
         self.chechPhoto = false
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.selectPhoto(_:)))
@@ -50,7 +50,8 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UI
     @IBAction func okButtonPressed(_ sender: Any) {
         self.okButton.isEnabled = false
         var data = Data()
-        data = UIImageJPEGRepresentation(self.profileImage.image!, 0.1)!
+        let newImage = self.ResizeImage(image: self.profileImage.image!,targetSize: CGSize(width: 390, height: 390.0))
+        data = UIImageJPEGRepresentation(newImage, 0.1)!
         FIRAuth.auth()?.createUser(withEmail: self.email.text!, password: self.password.text!, completion: { (user, error) in
             if let error = error {
                 let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
@@ -62,6 +63,7 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UI
                 self.okButton.isEnabled = true
                 return
             }else{
+                SVProgressHUD.show(withStatus: "Loading")
                 FIRAuth.auth()?.signIn(withEmail: self.email.text!, password: self.password.text!) { (user, error) in
                 }
                 let rootRef = FIRDatabase.database().reference()
@@ -95,6 +97,8 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UI
                             print(error.localizedDescription)
                             return
                         }else{
+                            SVProgressHUD.dismiss()
+                            SVProgressHUD.showSuccess(withStatus: "Great Success!")
                             print("Profile Updated")
                             self.dismiss(animated: true, completion: {})
                         }
@@ -139,6 +143,31 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UI
         self.dismiss(animated: true, completion: nil)
     }
     
+    func ResizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+        let size = image.size
+        
+        let widthRatio  = targetSize.width  / image.size.width
+        let heightRatio = targetSize.height / image.size.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio, height: size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+    }
 }
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
