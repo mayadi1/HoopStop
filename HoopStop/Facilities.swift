@@ -20,17 +20,20 @@ class Facilities: UIViewController, MKMapViewDelegate{
         super.viewDidLoad()
         locationManager.requestWhenInUseAuthorization()
         mapView.showsUserLocation = true
-
-        //Zoom to user Location
-        self.mapView.setRegion(MKCoordinateRegionMake(self.mapView.userLocation.coordinate, MKCoordinateSpanMake(0.005, 0.005)), animated: true)
-
+        locationManager.stopUpdatingLocation()
+      
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        //Zoom to user Location
+        self.mapView.setRegion(MKCoordinateRegionMake(self.mapView.userLocation.coordinate, MKCoordinateSpanMake(0.009, 0.009)), animated: true)
+            locationManager.stopUpdatingLocation()
+    }
     
 }
 

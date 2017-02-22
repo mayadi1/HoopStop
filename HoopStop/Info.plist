@@ -2,10 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera usage premission</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo library premission</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Allow accessing your locations. 🌎</string>
+	<string>HoopStop needs Maps to show location of facilities. 🌎</string>
 	<key>NSLocationUsageDescription</key>
-	<string>Allow accessing your locations. 🌎</string>
+	<string>HoopStop needs Maps to show location of facilities. 🌎</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
