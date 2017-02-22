@@ -6,7 +6,10 @@ target 'HoopStop' do
   use_frameworks!
 
   # Pods for HoopStop
-pod 'Firebase/Core'
-
-
+pod 'Firebase'
+pod ‘Firebase/Auth’
+pod 'Firebase/Database'
+pod 'Firebase/Storage’
+pod 'Firebase/Messaging'
+pod 'Firebase/Analytics'
 end
