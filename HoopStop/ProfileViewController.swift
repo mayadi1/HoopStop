@@ -8,16 +8,18 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var loginButton: UIButton!
-    var segueChecker = true
     
     override func viewWillAppear(_ animated: Bool) {
         FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
             if user != nil {
-                self.loginButton.setTitle("Sign Out", for: .normal)
+                DispatchQueue.main.async {() -> Void in
+                    self.loginButton.setTitle("Sign Out", for: .normal)
+                }
             }
         }
     }
@@ -42,24 +44,16 @@ class ProfileViewController: UIViewController {
     
     @IBAction func loginButtonPressed(_ sender: Any) {
         if (loginButton.titleLabel?.text == "Login"){
-            segueChecker = true
+            let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let logInViewController: UIViewController = mainStoryBoard.instantiateViewController(withIdentifier: "loginVC")
+            self.present(logInViewController, animated: false, completion: nil)
         }
         else{
-            segueChecker = false
             try! FIRAuth.auth()!.signOut()
-            self.loginButton.setTitle("Login", for: .normal)
-        }
-    }
-    
-     func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if (identifier == "login"){
-            if segueChecker == false {
-                return false
-            }else {
-                return true
+            SVProgressHUD.showSuccess(withStatus: "Signed out Success!")
+            DispatchQueue.main.async {() -> Void in
+                self.loginButton.setTitle("Login", for: .normal)
             }
-        }else{
-            return true
         }
     }
 }

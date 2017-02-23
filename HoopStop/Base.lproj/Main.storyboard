@@ -45,7 +45,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="loginButtonPressed:" destination="o4x-oa-rMo" eventType="touchUpInside" id="5f3-VL-Kcm"/>
-                                                    <segue destination="PtM-su-odk" kind="show" identifier="login" id="Ib3-md-jap"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -291,7 +290,7 @@
         <!--Login-->
         <scene sceneID="hja-Ka-fgl">
             <objects>
-                <viewController title="Login" id="PtM-su-odk" customClass="LoginViewController" customModule="HoopStop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" title="Login" id="PtM-su-odk" customClass="LoginViewController" customModule="HoopStop" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hqb-R8-Cg0"/>
                         <viewControllerLayoutGuide type="bottom" id="crt-hz-HKi"/>

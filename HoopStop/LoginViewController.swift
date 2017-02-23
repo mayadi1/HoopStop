@@ -31,6 +31,7 @@ class LoginViewController: UIViewController {
             if let error = error {
                 let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
                 let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+                    SVProgressHUD.dismiss()
                 }
                 alertController.addAction(OKAction)
                 self.present(alertController, animated: true, completion:nil)
