@@ -40,7 +40,7 @@ class ProfileViewController: UIViewController {
                 let submitNewFacilityViewController: UIViewController = mainStoryBoard.instantiateViewController(withIdentifier: "submitNewFacilityVC")
                 self.present(submitNewFacilityViewController, animated: false, completion: nil)
             }else{
-                let alertController = UIAlertController(title: "Membership Required", message: "Membership is required for some of the services. Sign-up in order to access this feature.", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Membership Required", message: "Membership is required for some of the services. Sign-up/Sign-in in order to access this feature.", preferredStyle: .alert)
                 let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
                 }
                 alertController.addAction(OKAction)
