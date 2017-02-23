@@ -34,12 +34,19 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func submitNewFacilityButtonPressed(_ sender: Any) {
-        //(FIRAuth.auth()?.currentUser?.uid)!
-        let alertController = UIAlertController(title: "Error", message: "", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+        FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
+            if user != nil {
+                let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let submitNewFacilityViewController: UIViewController = mainStoryBoard.instantiateViewController(withIdentifier: "submitNewFacilityVC")
+                self.present(submitNewFacilityViewController, animated: false, completion: nil)
+            }else{
+                let alertController = UIAlertController(title: "Membership Required", message: "Membership is required for some of the services. Sign-up in order to access this feature.", preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+                }
+                alertController.addAction(OKAction)
+                self.present(alertController, animated: true, completion:nil)
+            }
         }
-        alertController.addAction(OKAction)
-        self.present(alertController, animated: true, completion:nil)
     }
     
     @IBAction func loginButtonPressed(_ sender: Any) {
@@ -53,6 +60,22 @@ class ProfileViewController: UIViewController {
             SVProgressHUD.showSuccess(withStatus: "Signed out Success!")
             DispatchQueue.main.async {() -> Void in
                 self.loginButton.setTitle("Login", for: .normal)
+            }
+        }
+    }
+
+    @IBAction func singUpButtonPressed(_ sender: Any) {
+        FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
+            if user != nil {
+                let alertController = UIAlertController(title: nil, message: "You should sign out first. Thank you!", preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+                }
+                alertController.addAction(OKAction)
+                self.present(alertController, animated: true, completion:nil)
+            }else{
+                let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let signUpViewController: UIViewController = mainStoryBoard.instantiateViewController(withIdentifier: "signUpVC")
+                self.present(signUpViewController, animated: false, completion: nil)
             }
         }
     }

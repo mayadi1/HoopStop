@@ -10,6 +10,7 @@
 		1865FA141E5DA9BF009A1918 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865FA131E5DA9BF009A1918 /* SignUpViewController.swift */; };
 		18A97C601E5E9D0900F62427 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A97C5F1E5E9D0900F62427 /* LoginViewController.swift */; };
 		18A97C621E5E9FAA00F62427 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A97C611E5E9FAA00F62427 /* ProfileViewController.swift */; };
+		18A97C641E5EABA300F62427 /* submitNewFacilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A97C631E5EABA300F62427 /* submitNewFacilityViewController.swift */; };
 		18C59F8B1E5D8C96005F61D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C59F8A1E5D8C96005F61D7 /* AppDelegate.swift */; };
 		18C59F8D1E5D8C96005F61D7 /* Facilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C59F8C1E5D8C96005F61D7 /* Facilities.swift */; };
 		18C59F901E5D8C96005F61D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18C59F8E1E5D8C96005F61D7 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 		1865FA131E5DA9BF009A1918 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		18A97C5F1E5E9D0900F62427 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		18A97C611E5E9FAA00F62427 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		18A97C631E5EABA300F62427 /* submitNewFacilityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = submitNewFacilityViewController.swift; sourceTree = "<group>"; };
 		18C59F871E5D8C96005F61D7 /* HoopStop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoopStop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18C59F8A1E5D8C96005F61D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18C59F8C1E5D8C96005F61D7 /* Facilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facilities.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				18C59F8C1E5D8C96005F61D7 /* Facilities.swift */,
 				18A97C611E5E9FAA00F62427 /* ProfileViewController.swift */,
 				18C59F8E1E5D8C96005F61D7 /* Main.storyboard */,
+				18A97C631E5EABA300F62427 /* submitNewFacilityViewController.swift */,
 				18A97C5F1E5E9D0900F62427 /* LoginViewController.swift */,
 				1865FA131E5DA9BF009A1918 /* SignUpViewController.swift */,
 				18C59F911E5D8C96005F61D7 /* Assets.xcassets */,
@@ -229,6 +232,7 @@
 				1865FA141E5DA9BF009A1918 /* SignUpViewController.swift in Sources */,
 				18A97C621E5E9FAA00F62427 /* ProfileViewController.swift in Sources */,
 				18C59F8D1E5D8C96005F61D7 /* Facilities.swift in Sources */,
+				18A97C641E5EABA300F62427 /* submitNewFacilityViewController.swift in Sources */,
 				18C59F8B1E5D8C96005F61D7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
