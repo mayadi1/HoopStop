@@ -21,4 +21,12 @@ class submitNewFacilityViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        self.dismiss(animated: false) {
+        }
+    }
+    
+    @IBAction func okButtonPressed(_ sender: Any) {
+    }
+    
 }
