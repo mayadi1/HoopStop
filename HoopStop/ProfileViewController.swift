@@ -16,6 +16,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
+        self.isEditing = false
         FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
             if user != nil {
                 self.editProfileButton.isHidden = false

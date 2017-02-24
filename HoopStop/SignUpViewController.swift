@@ -20,7 +20,6 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UI
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
   
-    var chechPhoto: Bool?
     let imagePicker = UIImagePickerController()
     var selectedPhoto: UIImage!
     var storageRef: FIRStorageReference{
@@ -28,15 +27,16 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UI
     }
     var fileUrl: String!
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.okButton.isEnabled = true
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        self.chechPhoto = false
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.selectPhoto(_:)))
         tap.numberOfTapsRequired = 1
         profileImage.addGestureRecognizer(tap)
-        
         profileImage.layer.cornerRadius = profileImage.frame.size.height / 3
         profileImage.clipsToBounds = true
         

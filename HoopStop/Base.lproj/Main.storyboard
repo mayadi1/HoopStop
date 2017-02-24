@@ -55,7 +55,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="editProfileButtonPressed:" destination="o4x-oa-rMo" eventType="touchUpInside" id="7a5-YW-B8O"/>
-                                                    <segue destination="Een-iu-rLx" kind="show" id="3QG-LS-b8R"/>
+                                                    <segue destination="Een-iu-rLx" kind="showDetail" action="showViewController:sender:" id="3QG-LS-b8R"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -548,9 +548,15 @@
                                     <navigationItem title="Edit Profile" id="kOO-GH-S0O">
                                         <barButtonItem key="leftBarButtonItem" title="Update" id="V2f-cI-JXe">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="updateButtonPressed:" destination="Een-iu-rLx" id="fDa-8m-nZd"/>
+                                            </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="lAm-lt-XT3">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="cancelButtonPressed:" destination="Een-iu-rLx" id="SeY-cZ-OtZ"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -583,7 +589,7 @@
                                             <outlet property="delegate" destination="Een-iu-rLx" id="6X6-dO-VcN"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Bo7-89-ByG">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bo7-89-ByG">
                                         <rect key="frame" x="0.0" y="120" width="375" height="60"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -592,7 +598,7 @@
                                             <outlet property="delegate" destination="Een-iu-rLx" id="5VL-0D-fBR"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="wC3-9T-7uu">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wC3-9T-7uu">
                                         <rect key="frame" x="0.0" y="180" width="375" height="60"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -628,6 +634,7 @@
                         <outlet property="name" destination="6AB-XN-0US" id="tub-br-Z2G"/>
                         <outlet property="password" destination="wC3-9T-7uu" id="9y8-rY-DVO"/>
                         <outlet property="profileImage" destination="dLr-vY-ede" id="crJ-o7-5vD"/>
+                        <outlet property="updateButton" destination="V2f-cI-JXe" id="fMV-6y-hwr"/>
                         <outlet property="username" destination="958-Ri-OTv" id="AXo-Ri-H0v"/>
                     </connections>
                 </viewController>

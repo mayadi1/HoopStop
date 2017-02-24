@@ -31,7 +31,7 @@ class Facilities: UIViewController, MKMapViewDelegate{
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         //Zoom to user Location
-        self.mapView.setRegion(MKCoordinateRegionMake(self.mapView.userLocation.coordinate, MKCoordinateSpanMake(0.009, 0.009)), animated: true)
+        self.mapView.setRegion(MKCoordinateRegionMake(self.mapView.userLocation.coordinate, MKCoordinateSpanMake(0.1, 0.1)), animated: true)
             locationManager.stopUpdatingLocation()
     }
     
