@@ -16,6 +16,7 @@ class submitNewFacilityViewController: UIViewController,UITextViewDelegate,UITex
     @IBOutlet weak var state: UITextField!
     @IBOutlet weak var zip: UITextField!
     
+    @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var addPhotoImage: UIImageView!
     @IBOutlet weak var additionalFacilityInfo: UITextView!
     var locationManager = CLLocationManager()
@@ -29,7 +30,6 @@ class submitNewFacilityViewController: UIViewController,UITextViewDelegate,UITex
             self.locationManager.requestWhenInUseAuthorization()
         }
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
         setAddress()
         }else{
             #if debug
@@ -69,6 +69,7 @@ class submitNewFacilityViewController: UIViewController,UITextViewDelegate,UITex
     }
     
     func setAddress(){
+        locationManager.startUpdatingLocation()
         let geoCoder = CLGeocoder()
         let location = CLLocation(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
         geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
@@ -100,6 +101,18 @@ class submitNewFacilityViewController: UIViewController,UITextViewDelegate,UITex
             //if let country = placeMark.addressDictionary!["Country"] as? NSString {
             //}
         })
+        self.locationManager.stopUpdatingLocation()
+    }
+    @IBAction func clearButtonPressed(_ sender: Any) {
+            self.facilityName.text = nil
+            self.streetAddress.text = nil
+            self.city.text = nil
+            self.zip.text = nil
+            self.state.text = nil
+            additionalFacilityInfo.text = nil
+    }
+    @IBAction func thisLocationButtonPressed(_ sender: Any) {
+        setAddress()
     }
 }
 

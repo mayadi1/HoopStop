@@ -424,13 +424,31 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JtP-3s-wSY">
                                 <rect key="frame" x="0.0" y="58" width="375" height="350"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmC-Wj-HFk">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="0l7-Th-Qo6">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <state key="normal" title="Clear">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                    </button>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9A8-Lb-IGh">
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="This location">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="thisLocationButtonPressed:" destination="TQC-ls-u2W" eventType="touchUpInside" id="uz1-mX-pPw"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmC-Wj-HFk">
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="Clear">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="clearButtonPressed:" destination="TQC-ls-u2W" eventType="touchUpInside" id="wr9-VB-MGe"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Facility Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6Ya-ls-muT">
                                         <rect key="frame" x="0.0" y="50" width="375" height="50"/>
                                         <nil key="textColor"/>
@@ -517,6 +535,7 @@
                         <outlet property="addPhotoImage" destination="0j1-bd-W2C" id="5WR-Qw-FfS"/>
                         <outlet property="additionalFacilityInfo" destination="y0n-Br-tfB" id="j6K-8q-3Xu"/>
                         <outlet property="city" destination="8Ls-X7-MqO" id="Tov-cT-ENx"/>
+                        <outlet property="clearButton" destination="mmC-Wj-HFk" id="lLP-ZM-rOS"/>
                         <outlet property="facilityName" destination="6Ya-ls-muT" id="a3d-EF-UTk"/>
                         <outlet property="state" destination="kab-ca-V6i" id="XaB-Tf-fbk"/>
                         <outlet property="streetAddress" destination="Etu-Mr-8Hu" id="2Cm-1j-5wP"/>
