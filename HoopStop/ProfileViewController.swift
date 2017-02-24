@@ -12,11 +12,13 @@ import SVProgressHUD
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var editProfileButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
             if user != nil {
+                self.editProfileButton.isHidden = false
                 DispatchQueue.main.async {() -> Void in
                     self.loginButton.setTitle("Sign Out", for: .normal)
                 }
@@ -78,5 +80,7 @@ class ProfileViewController: UIViewController {
                 self.present(signUpViewController, animated: false, completion: nil)
             }
         }
+    }
+    @IBAction func editProfileButtonPressed(_ sender: Any) {
     }
 }
