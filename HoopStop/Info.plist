@@ -2,14 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>Camera usage premission</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Photo library premission</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>HoopStop needs Maps to show location of facilities. 🌎</string>
-	<key>NSLocationUsageDescription</key>
-	<string>HoopStop needs Maps to show location of facilities. 🌎</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -26,8 +18,22 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera usage premission</string>
+	<key>NSLocationUsageDescription</key>
+	<string>HoopStop needs Maps to show location of facilities. 🌎</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>HoopStop needs Maps to show location of facilities. 🌎</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo library premission</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

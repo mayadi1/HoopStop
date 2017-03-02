@@ -9,8 +9,10 @@
 import UIKit
 import Firebase
 import SVProgressHUD
+import MessageUI
+import Social
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController,MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var editProfileButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
@@ -22,7 +24,10 @@ class ProfileViewController: UIViewController {
                 self.editProfileButton.isHidden = false
                 DispatchQueue.main.async {() -> Void in
                     self.loginButton.setTitle("Sign Out", for: .normal)
+                    self.editProfileButton.isHidden = false
                 }
+            }else{
+                self.editProfileButton.isHidden = true
             }
         }
     }
@@ -53,6 +58,8 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func loginButtonPressed(_ sender: Any) {
+        
+        
         if (loginButton.titleLabel?.text == "Login"){
             let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let logInViewController: UIViewController = mainStoryBoard.instantiateViewController(withIdentifier: "loginVC")
@@ -84,4 +91,45 @@ class ProfileViewController: UIViewController {
     }
     @IBAction func editProfileButtonPressed(_ sender: Any) {
     }
+    @IBAction func emailButtonPressed(_ sender: Any) {
+        
+        if !MFMailComposeViewController.canSendMail() {
+            print("Mail services are not available")
+            return
+        }else{
+            self.sendEmail()}
+    }
+    @IBAction func facebookButtonPressed(_ sender: Any) {
+        let vc = SLComposeViewController(forServiceType:SLServiceTypeFacebook)
+        vc?.add(UIImage(named: "appSmallIcon"))
+        vc?.add(URL(string: "http://www.hoopstop.net"))
+        vc?.setInitialText("Have you used HoopStop yet?")
+        self.present(vc!, animated: true, completion: nil)
+    }
+    @IBAction func twitterButtonPressed(_ sender: Any) {
+        let vc = SLComposeViewController(forServiceType:SLServiceTypeTwitter)
+        vc?.add(UIImage(named: "appSmallIcon"))
+        vc?.add(URL(string: "http://www.hoopstop.net"))
+        vc?.setInitialText("Have you used HoopStop yet?")
+        self.present(vc!, animated: true, completion: nil)
+    }
+    @IBAction func aboutButtonPressed(_ sender: Any) {
+        UIApplication.shared.openURL(NSURL(string: "http://www.hoopstop.net")! as URL)
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func sendEmail() {
+        let composeVC = MFMailComposeViewController()
+        composeVC.mailComposeDelegate = self
+        // Configure the fields of the interface.
+        composeVC.setToRecipients(["address@example.com", "founder@hoopstop.net"])
+        composeVC.setSubject("Check out HoopStop!")
+        composeVC.setMessageBody("Hi Basketball Star!If you love to shoot hoops a lot and also travel around the US, and don't want to miss the fun when away from home, then you should check out this app for basketball aficionados from HoopStop Network. It will help you to locate basketball courts around the country. Supply information about a facility you know is good but has not yet been reviewed by HoopStop, and the name/info you supply about you will be displayed with the facility and seen by others who use the app.How cool is that ?. You might not be an NBA star like Koby Bryant but others will know that if they visit your neighborhood, they will have a good player to shoot hoops with.Launch the App Store app and download it!!", isHTML: false)
+        // Present the view controller modally.
+        self.present(composeVC, animated: true, completion: nil)
+    }
 }
+

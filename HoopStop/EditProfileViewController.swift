@@ -47,7 +47,11 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate,UIImagePi
             self.username.text = tempProfileInfoArray["username"] as? String
             self.email.text = tempProfileInfoArray["useremail"] as? String
             self.password.text = "******"
+            if((tempProfileInfoArray["userProfilePic"] as? String)! == "NoPhoto"){
+                self.profileImage.image = UIImage(named: "profile-1")
+            }else{
             self.profileImage.downloadedFrom(link: (tempProfileInfoArray["userProfilePic"] as? String)!)
+            }
         })
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.selectPhoto(_:)))
@@ -73,9 +77,6 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate,UIImagePi
     }
     @IBAction func updateButtonPressed(_ sender: Any) {
         self.updateButton.isEnabled = false
-        var data = Data()
-        let newImage = self.ResizeImage(image: self.profileImage.image!,targetSize: CGSize(width: 390, height: 390.0))
-        data = UIImageJPEGRepresentation(newImage, 0.1)!
         SVProgressHUD.show(withStatus: "Loading")
         let rootRef = FIRDatabase.database().reference()
         let user = FIRAuth.auth()?.currentUser
@@ -89,6 +90,10 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate,UIImagePi
                 return
             }
         })
+        if(selectedPhoto != nil){
+        var data = Data()
+        let newImage = self.ResizeImage(image: self.profileImage.image!,targetSize: CGSize(width: 390, height: 390.0))
+        data = UIImageJPEGRepresentation(newImage, 0.1)!
         let filePath = "profileImage/\(user!.uid)"
         let metadata =  FIRStorageMetadata()
         metadata.contentType = "image/jpeg"
@@ -114,6 +119,12 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate,UIImagePi
             })
             
         })
+        }else{
+            SVProgressHUD.dismiss()
+            SVProgressHUD.showSuccess(withStatus: "Great Success!")
+            self.isEditing = false
+            self.dismiss(animated: true, completion: {})
+        }
     }
     
     func selectPhoto(_ tap: UITapGestureRecognizer) {

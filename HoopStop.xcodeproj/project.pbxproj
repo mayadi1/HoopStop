@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		182C06F01E67CBFF007B7F97 /* ResetMyPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C06EF1E67CBFF007B7F97 /* ResetMyPasswordViewController.swift */; };
+		185887DD1E67AC8A00C9C6F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185887DC1E67AC8A00C9C6F7 /* ViewController.swift */; };
+		185887DF1E67AC9D00C9C6F7 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185887DE1E67AC9D00C9C6F7 /* LocationSearchTableViewController.swift */; };
 		1865FA141E5DA9BF009A1918 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865FA131E5DA9BF009A1918 /* SignUpViewController.swift */; };
+		1867752C1E6100B200E132FB /* FacilityPinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1867752B1E6100B200E132FB /* FacilityPinInfo.swift */; };
+		187E41071E67DDE600D34DCA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 187E41061E67DDE600D34DCA /* GoogleService-Info.plist */; };
+		188F45A41E66BBA3009C0836 /* InviteDisinviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188F45A31E66BBA3009C0836 /* InviteDisinviteViewController.swift */; };
 		18A97C601E5E9D0900F62427 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A97C5F1E5E9D0900F62427 /* LoginViewController.swift */; };
 		18A97C621E5E9FAA00F62427 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A97C611E5E9FAA00F62427 /* ProfileViewController.swift */; };
 		18A97C641E5EABA300F62427 /* submitNewFacilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A97C631E5EABA300F62427 /* submitNewFacilityViewController.swift */; };
@@ -17,12 +23,19 @@
 		18C59F901E5D8C96005F61D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18C59F8E1E5D8C96005F61D7 /* Main.storyboard */; };
 		18C59F921E5D8C96005F61D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18C59F911E5D8C96005F61D7 /* Assets.xcassets */; };
 		18C59F951E5D8C96005F61D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18C59F931E5D8C96005F61D7 /* LaunchScreen.storyboard */; };
-		18C59F9D1E5D8CC7005F61D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18C59F9C1E5D8CC7005F61D7 /* GoogleService-Info.plist */; };
+		18F0C5711E65F8D5008ADA93 /* ShowPinInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0C5701E65F8D5008ADA93 /* ShowPinInfoViewController.swift */; };
+		18F0C5731E6620BA008ADA93 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0C5721E6620BA008ADA93 /* UserInfoViewController.swift */; };
 		70C520E277AD0BD17607043B /* Pods_HoopStop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF40CD0577131CBD1AE5CF7B /* Pods_HoopStop.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		182C06EF1E67CBFF007B7F97 /* ResetMyPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetMyPasswordViewController.swift; sourceTree = "<group>"; };
+		185887DC1E67AC8A00C9C6F7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		185887DE1E67AC9D00C9C6F7 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
 		1865FA131E5DA9BF009A1918 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		1867752B1E6100B200E132FB /* FacilityPinInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityPinInfo.swift; sourceTree = "<group>"; };
+		187E41061E67DDE600D34DCA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		188F45A31E66BBA3009C0836 /* InviteDisinviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteDisinviteViewController.swift; sourceTree = "<group>"; };
 		18A97C5F1E5E9D0900F62427 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		18A97C611E5E9FAA00F62427 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		18A97C631E5EABA300F62427 /* submitNewFacilityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = submitNewFacilityViewController.swift; sourceTree = "<group>"; };
@@ -34,7 +47,9 @@
 		18C59F911E5D8C96005F61D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18C59F941E5D8C96005F61D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18C59F961E5D8C96005F61D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18C59F9C1E5D8CC7005F61D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		18F0C5701E65F8D5008ADA93 /* ShowPinInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowPinInfoViewController.swift; sourceTree = "<group>"; };
+		18F0C5721E6620BA008ADA93 /* UserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		18F0C5741E66282B008ADA93 /* HoopStop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HoopStop.entitlements; sourceTree = "<group>"; };
 		CF40CD0577131CBD1AE5CF7B /* Pods_HoopStop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoopStop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F448AF30B65B131AAE5502F6 /* Pods-HoopStop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoopStop.release.xcconfig"; path = "Pods/Target Support Files/Pods-HoopStop/Pods-HoopStop.release.xcconfig"; sourceTree = "<group>"; };
 		F52CB08F7087A490B9495B0E /* Pods-HoopStop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoopStop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HoopStop/Pods-HoopStop.debug.xcconfig"; sourceTree = "<group>"; };
@@ -73,18 +88,26 @@
 		18C59F891E5D8C96005F61D7 /* HoopStop */ = {
 			isa = PBXGroup;
 			children = (
+				18F0C5741E66282B008ADA93 /* HoopStop.entitlements */,
 				18C59F8A1E5D8C96005F61D7 /* AppDelegate.swift */,
 				18C59F8C1E5D8C96005F61D7 /* Facilities.swift */,
+				1867752B1E6100B200E132FB /* FacilityPinInfo.swift */,
 				18A97C611E5E9FAA00F62427 /* ProfileViewController.swift */,
 				18C59F8E1E5D8C96005F61D7 /* Main.storyboard */,
+				182C06EF1E67CBFF007B7F97 /* ResetMyPasswordViewController.swift */,
+				185887DC1E67AC8A00C9C6F7 /* ViewController.swift */,
+				185887DE1E67AC9D00C9C6F7 /* LocationSearchTableViewController.swift */,
+				188F45A31E66BBA3009C0836 /* InviteDisinviteViewController.swift */,
+				18F0C5701E65F8D5008ADA93 /* ShowPinInfoViewController.swift */,
+				18F0C5721E6620BA008ADA93 /* UserInfoViewController.swift */,
 				18AD4DD11E6010E200E4797F /* EditProfileViewController.swift */,
 				18A97C631E5EABA300F62427 /* submitNewFacilityViewController.swift */,
 				18A97C5F1E5E9D0900F62427 /* LoginViewController.swift */,
 				1865FA131E5DA9BF009A1918 /* SignUpViewController.swift */,
 				18C59F911E5D8C96005F61D7 /* Assets.xcassets */,
 				18C59F931E5D8C96005F61D7 /* LaunchScreen.storyboard */,
+				187E41061E67DDE600D34DCA /* GoogleService-Info.plist */,
 				18C59F961E5D8C96005F61D7 /* Info.plist */,
-				18C59F9C1E5D8CC7005F61D7 /* GoogleService-Info.plist */,
 			);
 			path = HoopStop;
 			sourceTree = "<group>";
@@ -141,8 +164,16 @@
 				TargetAttributes = {
 					18C59F861E5D8C96005F61D7 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = PE9MW7PNB5;
+						DevelopmentTeam = 6KKRC5GQMV;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -170,8 +201,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				18C59F951E5D8C96005F61D7 /* LaunchScreen.storyboard in Resources */,
+				187E41071E67DDE600D34DCA /* GoogleService-Info.plist in Resources */,
 				18C59F921E5D8C96005F61D7 /* Assets.xcassets in Resources */,
-				18C59F9D1E5D8CC7005F61D7 /* GoogleService-Info.plist in Resources */,
 				18C59F901E5D8C96005F61D7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,11 +262,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185887DF1E67AC9D00C9C6F7 /* LocationSearchTableViewController.swift in Sources */,
+				1867752C1E6100B200E132FB /* FacilityPinInfo.swift in Sources */,
+				18F0C5711E65F8D5008ADA93 /* ShowPinInfoViewController.swift in Sources */,
 				18A97C601E5E9D0900F62427 /* LoginViewController.swift in Sources */,
 				1865FA141E5DA9BF009A1918 /* SignUpViewController.swift in Sources */,
 				18A97C621E5E9FAA00F62427 /* ProfileViewController.swift in Sources */,
 				18C59F8D1E5D8C96005F61D7 /* Facilities.swift in Sources */,
+				182C06F01E67CBFF007B7F97 /* ResetMyPasswordViewController.swift in Sources */,
+				185887DD1E67AC8A00C9C6F7 /* ViewController.swift in Sources */,
 				18A97C641E5EABA300F62427 /* submitNewFacilityViewController.swift in Sources */,
+				188F45A41E66BBA3009C0836 /* InviteDisinviteViewController.swift in Sources */,
+				18F0C5731E6620BA008ADA93 /* UserInfoViewController.swift in Sources */,
 				18C59F8B1E5D8C96005F61D7 /* AppDelegate.swift in Sources */,
 				18AD4DD21E6010E200E4797F /* EditProfileViewController.swift in Sources */,
 			);
@@ -361,11 +399,12 @@
 			baseConfigurationReference = F52CB08F7087A490B9495B0E /* Pods-HoopStop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = PE9MW7PNB5;
+				CODE_SIGN_ENTITLEMENTS = HoopStop/HoopStop.entitlements;
+				DEVELOPMENT_TEAM = 6KKRC5GQMV;
 				INFOPLIST_FILE = HoopStop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ayadios.HoopStop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ayadios.HoopStop2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -376,11 +415,12 @@
 			baseConfigurationReference = F448AF30B65B131AAE5502F6 /* Pods-HoopStop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = PE9MW7PNB5;
+				CODE_SIGN_ENTITLEMENTS = HoopStop/HoopStop.entitlements;
+				DEVELOPMENT_TEAM = 6KKRC5GQMV;
 				INFOPLIST_FILE = HoopStop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ayadios.HoopStop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ayadios.HoopStop2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

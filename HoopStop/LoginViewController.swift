@@ -49,4 +49,11 @@ class LoginViewController: UIViewController {
         self.dismiss(animated: false) {
         }
     }
+    
+    @IBAction func resetMyPasswordButtonPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ResetVC")
+        self.present(vc, animated: true) {
+        }
+    }
 }

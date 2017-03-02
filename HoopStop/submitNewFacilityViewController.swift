@@ -12,7 +12,7 @@ import FirebaseAuth
 import Firebase
 import SVProgressHUD
 
-class submitNewFacilityViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate,MKMapViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class submitNewFacilityViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate,MKMapViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate, ButtonDelegate {
     @IBOutlet weak var facilityName: UITextField!
     @IBOutlet weak var streetAddress: UITextField!
     @IBOutlet weak var city: UITextField!
@@ -35,6 +35,15 @@ class submitNewFacilityViewController: UIViewController,UITextViewDelegate,UITex
     var autoChilSigned = "text"
     override func viewWillAppear(_ animated: Bool) {
         self.okButton.isEnabled = true
+    }
+    
+    internal func onButtonTap(_ placemark: MKPlacemark) {
+        let address =  placemark.title?.components(separatedBy: ", ")
+        let statezipString = address?[2].components(separatedBy: " ")
+        self.streetAddress.text = address?[0]
+        self.city.text = address?[1]
+        self.state.text = statezipString?[0]
+        self.zip.text = statezipString?[2]
     }
     
     override func viewDidLoad() {
@@ -72,9 +81,6 @@ class submitNewFacilityViewController: UIViewController,UITextViewDelegate,UITex
     @IBAction func okButtonPressed(_ sender: Any) {
         self.okButton.isEnabled = false
         getLatLong()
-        var data = Data()
-        let newImage = self.ResizeImage(image: self.addPhotoImage.image!,targetSize: CGSize(width: 390, height: 390.0))
-        data = UIImageJPEGRepresentation(newImage, 0.1)!
         SVProgressHUD.show(withStatus: "Loading")
         let rootRef = FIRDatabase.database().reference()
         let autoChild = rootRef.childByAutoId().key
@@ -84,9 +90,19 @@ class submitNewFacilityViewController: UIViewController,UITextViewDelegate,UITex
         rootRef.child("facilities").child(self.zip.text!).child("\(autoChild)").child("city").setValue(self.city.text)
         rootRef.child("facilities").child(self.zip.text!).child("\(autoChild)").child("state").setValue(self.state.text)
         rootRef.child("facilities").child(self.zip.text!).child("\(autoChild)").child("zip").setValue(self.zip.text)
-        rootRef.child("facilities").child(self.zip.text!).child("\(autoChild)").child("additionalFacilityInfo").setValue(self.additionalFacilityInfo.text)
+       
+        if(additionalFacilityInfo.text == "Additional Facility Info"){
+            rootRef.child("facilities").child(self.zip.text!).child("\(autoChild)").child("additionalFacilityInfo").setValue("No Info")
+
+        }else{
+            rootRef.child("facilities").child(self.zip.text!).child("\(autoChild)").child("additionalFacilityInfo").setValue(self.additionalFacilityInfo.text)
+        }
         rootRef.child("facilities").child(self.zip.text!).child("\(autoChild)").child("userIDPostingThis").setValue(self.userID)
         rootRef.child("facilities").child(self.zip.text!).child("\(autoChild)").child("addedDate").setValue(FIRServerValue.timestamp())
+        if(selectedPhoto != nil){
+        var data = Data()
+        let newImage = self.ResizeImage(image: self.addPhotoImage.image!,targetSize: CGSize(width: 390, height: 390.0))
+        data = UIImageJPEGRepresentation(newImage, 0.1)!
         let path = "\(userID)++\(autoChild)"
         let filePath = "facilitiesImage/\(path)"
         let metadata =  FIRStorageMetadata()
@@ -106,6 +122,13 @@ class submitNewFacilityViewController: UIViewController,UITextViewDelegate,UITex
             self.isEditing = false
             self.dismiss(animated: true, completion: {})
         })
+        }else{
+            rootRef.child("facilities").child(self.zip.text!).child("\(autoChild)").child("facilityPhoto").setValue("NoPhoto")
+            SVProgressHUD.dismiss()
+            SVProgressHUD.showSuccess(withStatus: "Great Success!")
+            self.isEditing = false
+            self.dismiss(animated: true, completion: {})
+        }
 
     }
     
@@ -247,4 +270,11 @@ class submitNewFacilityViewController: UIViewController,UITextViewDelegate,UITex
 
     }
 
+    @IBAction func searchButtonPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "searchLocation")
+      let newVc = vc.childViewControllers[0] as! ViewController
+        newVc.delegate = self
+        self.present(vc, animated: true) {}
+    }
 }

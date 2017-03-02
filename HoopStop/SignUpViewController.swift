@@ -11,8 +11,9 @@ import Firebase
 import FirebaseDatabase
 import SVProgressHUD
 
-class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UITextFieldDelegate{
 
+    @IBOutlet weak var additionalProfileInfo: UITextView!
     @IBOutlet weak var okButton: UIBarButtonItem!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var name: UITextField!
@@ -48,10 +49,15 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UI
         }
     }
     @IBAction func okButtonPressed(_ sender: Any) {
+        if(self.name.text == "" || self.username.text == "" || self.email.text == "" || self.password.text == ""){
+            let alert = UIAlertController(title: "Error", message: "You must fill up your information.", preferredStyle: .alert)
+            let gotItButton = UIAlertAction(title: "Got it", style: .cancel, handler: nil)
+            alert.addAction(gotItButton)
+            self.present(alert, animated: true, completion: nil)
+            print("cant go")
+            return
+        }
         self.okButton.isEnabled = false
-        var data = Data()
-        let newImage = self.ResizeImage(image: self.profileImage.image!,targetSize: CGSize(width: 390, height: 390.0))
-        data = UIImageJPEGRepresentation(newImage, 0.1)!
         FIRAuth.auth()?.createUser(withEmail: self.email.text!, password: self.password.text!, completion: { (user, error) in
             if let error = error {
                 let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
@@ -70,8 +76,11 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UI
                 rootRef.child("users").child("\(user!.uid)").child("name").setValue(self.name.text)
                 rootRef.child("users").child("\(user!.uid)").child("username").setValue(self.username.text)
                 rootRef.child("users").child("\(user!.uid)").child("useruid").setValue("\(user!.uid)")
+                rootRef.child("users").child("\(user!.uid)").child("additionalProfileInfo").setValue(self.additionalProfileInfo.text)
+
                 rootRef.child("users").child("\(user!.uid)").child("useremail").setValue(self.email.text)
                 rootRef.child("users").child("\(user!.uid)").child("valid").setValue("yes")
+                rootRef.child("users").child("\(user!.uid)").child("profileCreatedDate").setValue(FIRServerValue.timestamp())
                 let changeRequest = user?.profileChangeRequest()
                 changeRequest?.displayName = self.name.text
                 changeRequest?.commitChanges(completion: { (error) in
@@ -80,6 +89,10 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UI
                         return
                     }
                 })
+                if(self.selectedPhoto != nil){
+                var data = Data()
+                let newImage = self.ResizeImage(image: self.profileImage.image!,targetSize: CGSize(width: 390, height: 390.0))
+                data = UIImageJPEGRepresentation(newImage, 0.1)!
                 let filePath = "profileImage/\(user!.uid)"
                 let metadata =  FIRStorageMetadata()
                 metadata.contentType = "image/jpeg"
@@ -99,12 +112,17 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UI
                         }else{
                             SVProgressHUD.dismiss()
                             SVProgressHUD.showSuccess(withStatus: "Great Success!")
-                            print("Profile Updated")
                             self.dismiss(animated: true, completion: {})
                         }
                     })
                     
                 })
+                }else{
+                    rootRef.child("users").child("\(user!.uid)").child("userProfilePic").setValue("NoPhoto")
+                    SVProgressHUD.dismiss()
+                    SVProgressHUD.showSuccess(withStatus: "Great Success!")
+                    self.dismiss(animated: true, completion: {})
+                }
             }
     })
 
@@ -167,6 +185,24 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UI
         UIGraphicsEndImageContext()
         
         return newImage!
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        additionalProfileInfo.text = nil
+        additionalProfileInfo.textColor = UIColor.black
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }
 extension UIViewController {
