@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class InviteDisinviteViewController: UIViewController {
     var passedUser = [UserInfoViewController]()
@@ -29,6 +30,7 @@ class InviteDisinviteViewController: UIViewController {
     }
     
     @IBAction func inviteButtonPressed(_ sender: Any) {
+        SVProgressHUD.showSuccess(withStatus: "Invite sent.")
         self.dismiss(animated: false) {
         }
     }

@@ -54,7 +54,6 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UI
             let gotItButton = UIAlertAction(title: "Got it", style: .cancel, handler: nil)
             alert.addAction(gotItButton)
             self.present(alert, animated: true, completion: nil)
-            print("cant go")
             return
         }
         self.okButton.isEnabled = false

@@ -79,6 +79,13 @@ class submitNewFacilityViewController: UIViewController,UITextViewDelegate,UITex
     }
     
     @IBAction func okButtonPressed(_ sender: Any) {
+        if(self.facilityName.text == "" || self.streetAddress.text == "" || self.city.text == "" || self.state.text == "" || self.zip.text == ""){
+            let alert = UIAlertController(title: "Error", message: "You must fill up the missing information.", preferredStyle: .alert)
+            let gotItButton = UIAlertAction(title: "Got it", style: .cancel, handler: nil)
+            alert.addAction(gotItButton)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         self.okButton.isEnabled = false
         getLatLong()
         SVProgressHUD.show(withStatus: "Loading")
