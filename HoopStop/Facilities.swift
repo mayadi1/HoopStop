@@ -141,7 +141,7 @@ class Facilities: UIViewController, MKMapViewDelegate{
     }
     
     func zoomToUserLocation(){
-        self.mapView.setRegion(MKCoordinateRegionMake((self.locationManager.location?.coordinate)!, MKCoordinateSpanMake(0.6, 0.6)), animated: true)
+        self.mapView.setRegion(MKCoordinateRegionMake((self.locationManager.location?.coordinate)!, MKCoordinateSpanMake(0.6, 0.6)), animated: false)
         self.zoomChecker = false
     }
     
