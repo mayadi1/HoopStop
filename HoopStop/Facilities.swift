@@ -12,13 +12,13 @@ import Firebase
 import FirebaseAuth
 
 class Facilities: UIViewController, MKMapViewDelegate{
+
     var pins = [FacilityPinInfo]()
     @IBOutlet weak var mapView: MKMapView!
     let ref = FIRDatabase.database().reference()
     let locationManager = CLLocationManager()
     var newFacilityImage: UIImage?
     var zoomChecker = false
-    
     override func viewWillAppear(_ animated: Bool) {
         let authorizationStatus = CLLocationManager.authorizationStatus()
         if (authorizationStatus == CLAuthorizationStatus.notDetermined) {
