@@ -7,13 +7,34 @@
 //
 
 import UIKit
+import MapKit
 
-class PermissionsViewController: UIViewController {
-    let permissionAssistant = SPRequestPermissionAssistant.modules.dialog.interactive.create(with: [.Camera, .PhotoLibrary, .Notification])
+class PermissionsViewController: UIViewController, SPRequestPermissionEventsDelegate {
+    public func didSelectedPermission(permission: SPRequestPermissionType) {
+        
+    }
+
+    public func didAllowPermission(permission: SPRequestPermissionType) {
+        self.locationManager.requestWhenInUseAuthorization()
+    }
+
+    public func didDeniedPermission(permission: SPRequestPermissionType) {
+        
+    }
+
+    public func didHide() {
+        self.buttonObj.sendActions(for: .touchUpInside)
+    }
+
+    let locationManager = CLLocationManager()
+
+    @IBOutlet weak var buttonObj: UIButton!
+    var permissionAssistant = SPRequestPermissionAssistant.modules.dialog.interactive.create(with: [.Camera, .PhotoLibrary, .Notification])
 
     @IBOutlet weak var patternView: SPPatternView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        permissionAssistant.eventsDelegate = self
         self.view.backgroundColor = UIColor.init(hex: "#00A3E8")
         self.patternView.setRhombusPattern()
         self.patternView.color = UIColor.white

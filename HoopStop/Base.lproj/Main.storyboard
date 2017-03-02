@@ -1237,6 +1237,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonObj" destination="6by-cm-UWi" id="lnS-aS-bXy"/>
                         <outlet property="patternView" destination="Grq-Zi-agb" id="fu4-aV-niZ"/>
                     </connections>
                 </viewController>
