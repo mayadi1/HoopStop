@@ -73,11 +73,24 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     }
     
     func signInOutSwitchSwitchChanged(){
-        print("here")
+        if(self.signInOutSwitch.isOn == true){
+            self.signInLabel.text = "You are now here"
+        }else{
+            self.signInLabel.text = "You can sign in here"
+        }
     }
     
     func inviteSwitchSwitchChanged(){
-        
+        if(self.inviteSwitch.isOn == true){
+            let alert = UIAlertController(title: "Invite Friends", message: "Will this be a PRIVATE or PUBLIC invitation?. Select a member from the table to invite.", preferredStyle: .alert)
+            let publicInvite = UIAlertAction(title: "Public", style: .default) { (UIAlertAction) in
+            }
+            let privateInvite = UIAlertAction(title: "Private", style: .default) { (UIAlertAction) in
+            }
+            alert.addAction(publicInvite)
+            alert.addAction(privateInvite)
+            self.show(alert, sender: self)
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
