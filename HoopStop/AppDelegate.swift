@@ -8,7 +8,6 @@
 
 import UIKit
 import UserNotifications
-
 import Firebase
 import FirebaseInstanceID
 import FirebaseMessaging
@@ -24,24 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        SPLaunchAnimation.slideWithParalax(
-            disabelParalaxForFirstViewOnLaunchScreenView: false,
-            disabelParalaxForFirstViewOnRootViewController: true,
-            onWindow: self.window!
-        )
-        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
-        if launchedBefore  {
-            print("Not first launch.")
-        }
-        else {
-            let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let permissionVC: UIViewController = mainStoryBoard.instantiateViewController(withIdentifier: "PermissionsVC")
-            self.window?.rootViewController = permissionVC
-            self.window?.makeKeyAndVisible()
-            print("First launch, setting NSUserDefault.")
-            UserDefaults.standard.set(true, forKey: "launchedBefore")
-        }
-
         // Register for remote notifications. This shows a permission dialog on first run, to
         // show the dialog at a more appropriate time move this registration accordingly.
         // [START register_for_notifications]
