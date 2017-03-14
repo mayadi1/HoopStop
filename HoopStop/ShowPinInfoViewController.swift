@@ -21,6 +21,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     @IBOutlet weak var navItem: UINavigationItem!
     let usersFef = FIRDatabase.database().reference().child("users")
     let userID = FIRAuth.auth()?.currentUser?.uid
+    var invite = "Public"
     @IBOutlet weak var showFacilityInfoButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,6 +29,12 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
             if (snapshot.value as! String == self.navItem.title!){
                 self.signInOutSwitch.isOn = true
                 self.signInLabel.text = "You are now here"
+                for user in self.users{
+                    if (user.userUid == self.userID){
+                        user.signedInAt = self.navItem.title
+                        self.tableView.reloadData()
+                    }
+                }
             }
         })
     }
@@ -92,6 +99,12 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
             usersFef.child((FIRAuth.auth()?.currentUser?.uid)!).child("signedInAt").setValue(self.passedPin[0].name)
         }else{
             usersFef.child((FIRAuth.auth()?.currentUser?.uid)!).child("signedInAt").setValue("Not signed in at any facility")
+            for user in self.users{
+                if (user.userUid == self.userID){
+                    user.signedInAt = "Not signed in at any facility"
+                    self.tableView.reloadData()
+                }
+            }
             self.signInLabel.text = "You can sign in here"
         }
     }
@@ -100,8 +113,10 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
         if(self.inviteSwitch.isOn == true){
             let alert = UIAlertController(title: "Invite Friends", message: "Will this be a PRIVATE or PUBLIC invitation?. Select a member from the table to invite.", preferredStyle: .alert)
             let publicInvite = UIAlertAction(title: "Public", style: .default) { (UIAlertAction) in
+                self.invite = "Public"
             }
             let privateInvite = UIAlertAction(title: "Private", style: .default) { (UIAlertAction) in
+                self.invite = "Private"
             }
             alert.addAction(publicInvite)
             alert.addAction(privateInvite)
@@ -122,8 +137,10 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
 
         if (self.users[indexPath.row].signedInAt == "Not signed in at any facility"){
             cell.detailTextLabel?.text = self.users[indexPath.row].signedInAt
+            cell.detailTextLabel?.backgroundColor = UIColor.white
         }else{
             cell.detailTextLabel?.text = "Signed in At: " + self.users[indexPath.row].signedInAt!
+            cell.detailTextLabel?.backgroundColor = UIColor.green
         }
         return cell
     }
@@ -147,6 +164,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
         let vc = storyboard.instantiateViewController(withIdentifier: "InviteDisinvite") as! InviteDisinviteViewController
         vc.passedUser = [users[indexPath.row]]
         vc.passedImage = cell?.imageView?.image
+        vc.passedInviteType = self.invite
         tableView.deselectRow(at: indexPath, animated: false)
         self.present(vc, animated: true) {}
     }

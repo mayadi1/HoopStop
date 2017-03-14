@@ -12,6 +12,7 @@ import SVProgressHUD
 class InviteDisinviteViewController: UIViewController {
     var passedUser = [UserInfoViewController]()
     var passedImage: UIImage?
+    var passedInviteType: String?
     @IBOutlet weak var inviteButton: UIBarButtonItem!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
