@@ -36,7 +36,6 @@ class Facilities: UIViewController, MKMapViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.newFacilityImage = self.ResizeImage(image: UIImage(named: "facilityImage")!,targetSize: CGSize(width: 60, height: 80.0))
                mapView.showsUserLocation = true
     }
@@ -78,7 +77,6 @@ class Facilities: UIViewController, MKMapViewDelegate{
         point.title = tempFacility.name
         let distanceInMiles = self.locationManager.location!.distance(from: pinLocation) / 1609.344
         point.subtitle = (String(format: "%.2f", distanceInMiles)) + " " + "miles"
-
         self.mapView.addAnnotation(point as MKAnnotation)
         self.mapView.reloadInputViews()
     }
@@ -91,6 +89,20 @@ class Facilities: UIViewController, MKMapViewDelegate{
             var anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
             anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             anView?.rightCalloutAccessoryView = UIButton(type: .infoDark)
+            for item in self.pins{
+                if (item.lat == annotation.coordinate.latitude && item.long == annotation.coordinate.longitude && item.facilityPhoto != "NoPhoto"){
+                let url = URL(string: item.facilityPhoto!)
+                DispatchQueue.global().async {
+                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                        DispatchQueue.main.async {
+                            let image = self.ResizeImage(image:  UIImage(data: data!)!,targetSize: CGSize(width: 60, height: 80.0))
+                            anView?.leftCalloutAccessoryView = UIImageView.init(image: image)
+                        }
+                    }
+                }else{
+                    anView?.leftCalloutAccessoryView = UIImageView.init(image: self.newFacilityImage)
+                }
+            }
             anView?.leftCalloutAccessoryView = UIImageView.init(image: self.newFacilityImage)
             anView?.image = UIImage(named: "facilityE")
             anView?.canShowCallout = true

@@ -25,6 +25,7 @@
 		18C59F951E5D8C96005F61D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18C59F931E5D8C96005F61D7 /* LaunchScreen.storyboard */; };
 		18F0C5711E65F8D5008ADA93 /* ShowPinInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0C5701E65F8D5008ADA93 /* ShowPinInfoViewController.swift */; };
 		18F0C5731E6620BA008ADA93 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0C5721E6620BA008ADA93 /* UserInfoViewController.swift */; };
+		18F87BF01E77FDF300B6AAAB /* FullScreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F87BEF1E77FDF300B6AAAB /* FullScreenImageViewController.swift */; };
 		70C520E277AD0BD17607043B /* Pods_HoopStop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF40CD0577131CBD1AE5CF7B /* Pods_HoopStop.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		18F0C5701E65F8D5008ADA93 /* ShowPinInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowPinInfoViewController.swift; sourceTree = "<group>"; };
 		18F0C5721E6620BA008ADA93 /* UserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		18F0C5741E66282B008ADA93 /* HoopStop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HoopStop.entitlements; sourceTree = "<group>"; };
+		18F87BEF1E77FDF300B6AAAB /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
 		CF40CD0577131CBD1AE5CF7B /* Pods_HoopStop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoopStop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F448AF30B65B131AAE5502F6 /* Pods-HoopStop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoopStop.release.xcconfig"; path = "Pods/Target Support Files/Pods-HoopStop/Pods-HoopStop.release.xcconfig"; sourceTree = "<group>"; };
 		F52CB08F7087A490B9495B0E /* Pods-HoopStop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoopStop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HoopStop/Pods-HoopStop.debug.xcconfig"; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				1867752B1E6100B200E132FB /* FacilityPinInfo.swift */,
 				18A97C611E5E9FAA00F62427 /* ProfileViewController.swift */,
 				18C59F8E1E5D8C96005F61D7 /* Main.storyboard */,
+				18F87BEF1E77FDF300B6AAAB /* FullScreenImageViewController.swift */,
 				182C06EF1E67CBFF007B7F97 /* ResetMyPasswordViewController.swift */,
 				185887DC1E67AC8A00C9C6F7 /* ViewController.swift */,
 				185887DE1E67AC9D00C9C6F7 /* LocationSearchTableViewController.swift */,
@@ -264,6 +267,7 @@
 			files = (
 				185887DF1E67AC9D00C9C6F7 /* LocationSearchTableViewController.swift in Sources */,
 				1867752C1E6100B200E132FB /* FacilityPinInfo.swift in Sources */,
+				18F87BF01E77FDF300B6AAAB /* FullScreenImageViewController.swift in Sources */,
 				18F0C5711E65F8D5008ADA93 /* ShowPinInfoViewController.swift in Sources */,
 				18A97C601E5E9D0900F62427 /* LoginViewController.swift in Sources */,
 				1865FA141E5DA9BF009A1918 /* SignUpViewController.swift in Sources */,

@@ -20,10 +20,24 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var navItem: UINavigationItem!
     let usersFef = FIRDatabase.database().reference().child("users")
-    
+    let userID = FIRAuth.auth()?.currentUser?.uid
     @IBOutlet weak var showFacilityInfoButton: UIButton!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.usersFef.child(userID!).child("signedInAt").observe(.value, with: { (snapshot) in
+            if (snapshot.value as! String == self.navItem.title!){
+                self.signInOutSwitch.isOn = true
+                self.signInLabel.text = "You are now here"
+            }
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ShowPinInfoViewController.selectPhoto(_:)))
+        tap.numberOfTapsRequired = 1
+        image.addGestureRecognizer(tap)
+        
         self.retriveUserInfo()
         signInOutSwitch.addTarget(self, action: #selector(self.signInOutSwitchSwitchChanged), for: .valueChanged)
         inviteSwitch.addTarget(self, action: #selector(self.inviteSwitchSwitchChanged), for: .valueChanged)
@@ -75,7 +89,9 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     func signInOutSwitchSwitchChanged(){
         if(self.signInOutSwitch.isOn == true){
             self.signInLabel.text = "You are now here"
+            usersFef.child((FIRAuth.auth()?.currentUser?.uid)!).child("signedInAt").setValue(self.passedPin[0].name)
         }else{
+            usersFef.child((FIRAuth.auth()?.currentUser?.uid)!).child("signedInAt").setValue("Not signed in at any facility")
             self.signInLabel.text = "You can sign in here"
         }
     }
@@ -104,7 +120,11 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
         cell.imageView?.contentMode = .scaleAspectFill
         cell.imageView?.clipsToBounds = true
 
-        cell.detailTextLabel?.text = "Not signed in at any facility"
+        if (self.users[indexPath.row].signedInAt == "Not signed in at any facility"){
+            cell.detailTextLabel?.text = self.users[indexPath.row].signedInAt
+        }else{
+            cell.detailTextLabel?.text = "Signed in At: " + self.users[indexPath.row].signedInAt!
+        }
         return cell
     }
     
@@ -115,7 +135,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     func retriveUserInfo(){
         usersFef.observe(.childAdded, with: { (snapshot) in
             let user = snapshot.value as? [String: Any]
-            let tempUser = UserInfoViewController(passedName: (user!["name"])! as! String, passedUserProfilePic: (user!["userProfilePic"])! as! String, passedEmail: (user!["useremail"])! as! String, passedUserName: (user!["username"]! as! String), passedUid: (user!["useruid"]! as! String),passedAdditionalProfileInfo: (user!["additionalProfileInfo"])! as! String )
+            let tempUser = UserInfoViewController(passedName: (user!["name"])! as! String, passedUserProfilePic: (user!["userProfilePic"])! as! String, passedEmail: (user!["useremail"])! as! String, passedUserName: (user!["username"]! as! String), passedUid: (user!["useruid"]! as! String),passedAdditionalProfileInfo: (user!["additionalProfileInfo"])! as! String, passedSignedInAt: (user!["signedInAt"])! as! String)
             self.users.append(tempUser)
             self.tableView.reloadData()
         })
@@ -157,4 +177,11 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
         return newImage!
     }
 
+    func selectPhoto(_ tap: UITapGestureRecognizer){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "fullImageView") as! FullScreenImageViewController
+        vc.passedImage = self.image.image!
+        self.present(vc, animated: true) {
+        }
+    }
 }
