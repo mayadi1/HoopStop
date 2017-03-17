@@ -462,6 +462,7 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem id="6Ke-J0-e6H">
+                                        <nil key="title"/>
                                         <barButtonItem key="leftBarButtonItem" title="OK" id="fbm-hj-Rs4">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -598,6 +599,7 @@
                         <outlet property="image" destination="3Jf-ng-uO3" id="hJK-J7-USr"/>
                         <outlet property="inviteSwitch" destination="tEP-g2-AWD" id="h1P-an-8Ly"/>
                         <outlet property="navItem" destination="6Ke-J0-e6H" id="Xqj-K5-WxG"/>
+                        <outlet property="okButton" destination="fbm-hj-Rs4" id="9Oc-dV-CFh"/>
                         <outlet property="showFacilityInfoButton" destination="YFc-Vd-wn0" id="rcw-dv-7rT"/>
                         <outlet property="signInLabel" destination="qKT-wf-04v" id="j8z-Uv-gTp"/>
                         <outlet property="signInOutSwitch" destination="GEk-Qz-7p0" id="Bat-J6-X3q"/>
@@ -1067,18 +1069,18 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wpx-mW-ywx" id="RCr-a4-Gge">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="azV-x0-JxJ">
-                                            <rect key="frame" x="15.000000000000002" y="6" width="31.666666666666668" height="19.333333333333332"/>
+                                            <rect key="frame" x="15" y="5" width="32" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rir-aT-Cbk">
-                                            <rect key="frame" x="14.999999999999996" y="25.333333333333332" width="40.666666666666664" height="13.333333333333334"/>
+                                            <rect key="frame" x="15" y="25" width="41" height="14"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

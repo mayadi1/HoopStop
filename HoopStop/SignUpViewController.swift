@@ -81,6 +81,8 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UI
 
                 rootRef.child("users").child("\(user!.uid)").child("useremail").setValue(self.email.text)
                 rootRef.child("users").child("\(user!.uid)").child("valid").setValue("yes")
+                rootRef.child("users").child("\(user!.uid)").child("role").setValue("member")
+
                 rootRef.child("users").child("\(user!.uid)").child("profileCreatedDate").setValue(FIRServerValue.timestamp())
                 let changeRequest = user?.profileChangeRequest()
                 changeRequest?.displayName = self.name.text

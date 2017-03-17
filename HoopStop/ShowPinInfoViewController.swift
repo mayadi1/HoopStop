@@ -23,6 +23,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     let userID = FIRAuth.auth()?.currentUser?.uid
     var invite = "Public"
 
+    @IBOutlet weak var okButton: UIBarButtonItem!
     @IBOutlet weak var showFacilityInfoButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -166,7 +167,13 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     func retriveUserInfo(){
         usersFef.observe(.childAdded, with: { (snapshot) in
             let user = snapshot.value as? [String: Any]
-            let tempUser = UserInfoViewController(passedName: (user!["name"])! as! String, passedUserProfilePic: (user!["userProfilePic"])! as! String, passedEmail: (user!["useremail"])! as! String, passedUserName: (user!["username"]! as! String), passedUid: (user!["useruid"]! as! String),passedAdditionalProfileInfo: (user!["additionalProfileInfo"])! as! String, passedSignedInAt: (user!["signedInAt"])! as! String, passedInvitedAt:  (user!["invitedAt"])! as! [String])
+            let tempUser = UserInfoViewController(passedName: (user!["name"])! as! String, passedUserProfilePic: (user!["userProfilePic"])! as! String, passedEmail: (user!["useremail"])! as! String, passedUserName: (user!["username"]! as! String), passedUid: (user!["useruid"]! as! String),passedAdditionalProfileInfo: (user!["additionalProfileInfo"])! as! String, passedSignedInAt: (user!["signedInAt"])! as! String, passedInvitedAt: (user!["invitedAt"])! as! [String], passedRole: (user!["role"]! as! String))
+            if(tempUser.userUid == self.userID){
+                if(tempUser.role == "admin" || self.passedPin[0].userIDPostingThis == self.userID){
+                    self.okButton.title = "Delete"
+                    self.okButton.tintColor = UIColor.red
+                }
+            }
             self.users.append(tempUser)
             self.tableView.reloadData()
         })

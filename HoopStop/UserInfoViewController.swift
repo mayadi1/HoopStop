@@ -18,8 +18,9 @@ class UserInfoViewController {
     var additionalProfileInfo: String?
     var signedInAt: String?
     var invitedAt = [String]()
+    var role: String?
     
-    init(passedName: String, passedUserProfilePic: String, passedEmail: String, passedUserName: String, passedUid: String, passedAdditionalProfileInfo: String, passedSignedInAt: String, passedInvitedAt: [String]) {
+    init(passedName: String, passedUserProfilePic: String, passedEmail: String, passedUserName: String, passedUid: String, passedAdditionalProfileInfo: String, passedSignedInAt: String, passedInvitedAt: [String], passedRole: String) {
         self.name = passedName
         self.userProfilePic = passedUserProfilePic
         self.userEmail = passedEmail
@@ -27,5 +28,6 @@ class UserInfoViewController {
         self.additionalProfileInfo = passedAdditionalProfileInfo
         self.signedInAt = passedSignedInAt
         self.invitedAt = passedInvitedAt
+        self.role = passedRole
     }
 }
