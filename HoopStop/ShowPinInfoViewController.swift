@@ -22,6 +22,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     let usersFef = FIRDatabase.database().reference().child("users")
     let userID = FIRAuth.auth()?.currentUser?.uid
     var invite = "Public"
+
     @IBOutlet weak var showFacilityInfoButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -152,19 +153,24 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     func retriveUserInfo(){
         usersFef.observe(.childAdded, with: { (snapshot) in
             let user = snapshot.value as? [String: Any]
-            let tempUser = UserInfoViewController(passedName: (user!["name"])! as! String, passedUserProfilePic: (user!["userProfilePic"])! as! String, passedEmail: (user!["useremail"])! as! String, passedUserName: (user!["username"]! as! String), passedUid: (user!["useruid"]! as! String),passedAdditionalProfileInfo: (user!["additionalProfileInfo"])! as! String, passedSignedInAt: (user!["signedInAt"])! as! String)
+            let tempUser = UserInfoViewController(passedName: (user!["name"])! as! String, passedUserProfilePic: (user!["userProfilePic"])! as! String, passedEmail: (user!["useremail"])! as! String, passedUserName: (user!["username"]! as! String), passedUid: (user!["useruid"]! as! String),passedAdditionalProfileInfo: (user!["additionalProfileInfo"])! as! String, passedSignedInAt: (user!["signedInAt"])! as! String, passedInvitedAt:  (user!["invitedAt"])! as! [String])
             self.users.append(tempUser)
             self.tableView.reloadData()
         })
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     let selectedUsersFef = FIRDatabase.database().reference().child("users").child(users[indexPath.row].userUid!).child("invitedAt")
+        selectedUsersFef.observe(.value) { (snapshot) in
+            self.users[indexPath.row].invitedAt = snapshot.value as! [String]
+        }
         let cell = tableView.cellForRow(at: indexPath)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "InviteDisinvite") as! InviteDisinviteViewController
         vc.passedUser = [users[indexPath.row]]
         vc.passedImage = cell?.imageView?.image
         vc.passedInviteType = self.invite
+        vc.passedName = self.navItem.title
         tableView.deselectRow(at: indexPath, animated: false)
         self.present(vc, animated: true) {}
     }

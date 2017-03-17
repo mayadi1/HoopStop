@@ -77,6 +77,7 @@ class SignUpViewController: UIViewController,UIImagePickerControllerDelegate, UI
                 rootRef.child("users").child("\(user!.uid)").child("useruid").setValue("\(user!.uid)")
                 rootRef.child("users").child("\(user!.uid)").child("additionalProfileInfo").setValue(self.additionalProfileInfo.text)
                 rootRef.child("users").child("\(user!.uid)").child("signedInAt").setValue("Not signed in at any facility")
+                rootRef.child("users").child("\(user!.uid)").child("invitedAt").setValue(["0"])
 
                 rootRef.child("users").child("\(user!.uid)").child("useremail").setValue(self.email.text)
                 rootRef.child("users").child("\(user!.uid)").child("valid").setValue("yes")
