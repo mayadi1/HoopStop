@@ -128,7 +128,20 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.imageView?.image = UIImage(named: "profile-1")
-        cell.textLabel?.text = users[indexPath.row].name
+        var found = false
+        for facility in self.users[indexPath.row].invitedAt{
+            if (facility == self.navItem.title){
+               found = true
+            }
+        }
+        if (found == true){
+            cell.textLabel?.text = users[indexPath.row].name! + "*Invited"
+            cell.textLabel?.backgroundColor = UIColor.yellow
+        }
+        if ( found == false){
+            cell.textLabel?.text = users[indexPath.row].name
+        }
+        
         DispatchQueue.main.async {
         cell.imageView?.downloadedFrom(link: self.users[indexPath.row].userProfilePic!)
         //cell.imageView?.layer.cornerRadius = (cell.imageView?.frame.size.width)! / 2.0
@@ -161,9 +174,10 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
      let selectedUsersFef = FIRDatabase.database().reference().child("users").child(users[indexPath.row].userUid!).child("invitedAt")
-        selectedUsersFef.observe(.value) { (snapshot) in
+        selectedUsersFef.observe(.value, with: { (snapshot) in
             self.users[indexPath.row].invitedAt = snapshot.value as! [String]
-        }
+            self.tableView.reloadData()
+        })
         let cell = tableView.cellForRow(at: indexPath)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "InviteDisinvite") as! InviteDisinviteViewController

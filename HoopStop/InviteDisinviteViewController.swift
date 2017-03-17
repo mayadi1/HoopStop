@@ -38,22 +38,29 @@ class InviteDisinviteViewController: UIViewController {
     }
     
     @IBAction func inviteButtonPressed(_ sender: Any) {
-        var found = false
-        for facility in self.passedUser[0].invitedAt{
-            if (facility == self.passedName){
-                found = true
-                SVProgressHUD.showSuccess(withStatus: "Already invited.")
+        if (passedInviteType == "Public"){
+            var found = false
+            for facility in self.passedUser[0].invitedAt{
+                if (facility == self.passedName){
+                    found = true
+                    SVProgressHUD.showSuccess(withStatus: "Already invited.")
+                    self.dismiss(animated: false) {
+                    }
+                    return
+                }
+            }
+            if(found == false){
+                self.passedUser[0].invitedAt.append(self.passedName!)
+                usersFef.child(self.passedUser[0].userUid!).child("invitedAt").setValue(self.passedUser[0].invitedAt)
+                SVProgressHUD.showSuccess(withStatus: "Invite sent.")
                 self.dismiss(animated: false) {
                 }
-                return
             }
-        }
-        if(found == false){
-        self.passedUser[0].invitedAt.append(self.passedName!)
-        usersFef.child(self.passedUser[0].userUid!).child("invitedAt").setValue(self.passedUser[0].invitedAt)
-        SVProgressHUD.showSuccess(withStatus: "Invite sent.")
-        self.dismiss(animated: false) {
-        }
+
+        }else{
+            SVProgressHUD.showSuccess(withStatus: "Invite sent.")
+            self.dismiss(animated: false) {
+            }
         }
     }
     
