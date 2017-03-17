@@ -94,6 +94,7 @@ class submitNewFacilityViewController: UIViewController,UITextViewDelegate,UITex
         self.autoChilSigned = autoChild
         rootRef.child("facilities").child(self.zip.text!).child("\(autoChild)").child("name").setValue(self.facilityName.text)
         rootRef.child("facilities").child(self.zip.text!).child("\(autoChild)").child("streetAddress").setValue(self.streetAddress.text)
+        rootRef.child("facilities").child(self.zip.text!).child("\(autoChild)").child("facilityUid").setValue(autoChild)
         rootRef.child("facilities").child(self.zip.text!).child("\(autoChild)").child("city").setValue(self.city.text)
         rootRef.child("facilities").child(self.zip.text!).child("\(autoChild)").child("state").setValue(self.state.text)
         rootRef.child("facilities").child(self.zip.text!).child("\(autoChild)").child("zip").setValue(self.zip.text)

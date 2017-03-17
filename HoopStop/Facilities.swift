@@ -19,6 +19,7 @@ class Facilities: UIViewController, MKMapViewDelegate{
     let locationManager = CLLocationManager()
     var newFacilityImage: UIImage?
     var zoomChecker = false
+    
     override func viewWillAppear(_ animated: Bool) {
         let authorizationStatus = CLLocationManager.authorizationStatus()
         if (authorizationStatus == CLAuthorizationStatus.notDetermined) {
@@ -56,11 +57,10 @@ class Facilities: UIViewController, MKMapViewDelegate{
         let conditionall = ref.child("facilities")
         conditionall.observe(.childAdded, with:  { (snapshot) in
             let m = snapshot.value as? [String: Any]
-            // self.retriveSecondKeys(key: snapshot.key)
             for item in m!{
                 let n = item.value as? [String: Any]
                 if (n?["facilityPhoto"]  != nil){
-                    let tempInfo = FacilityPinInfo(passedAddedDate: (n?["addedDate"] as? Double)!, passedAdditionalFacilityInfo: (n?["additionalFacilityInfo"] as? String)!, passedCity: (n?["city"] as? String)!, passedFacilityPhoto: (n?["facilityPhoto"] as? String)!, passedLat: (n?["lat"] as? Double)!, passedLong: (n?["long"] as? Double)!, passedName: (n?["name"] as? String)!, passedState: (n?["state"] as? String)!, passedStreetAddress: (n?["streetAddress"] as? String)!, passedUserIDPostingThis: (n?["userIDPostingThis"] as? String)!, passedZip: (n?["zip"] as? String)!)
+                    let tempInfo = FacilityPinInfo(passedAddedDate: (n?["addedDate"] as? Double)!, passedAdditionalFacilityInfo: (n?["additionalFacilityInfo"] as? String)!, passedCity: (n?["city"] as? String)!, passedFacilityPhoto: (n?["facilityPhoto"] as? String)!, passedLat: (n?["lat"] as? Double)!, passedLong: (n?["long"] as? Double)!, passedName: (n?["name"] as? String)!, passedState: (n?["state"] as? String)!, passedStreetAddress: (n?["streetAddress"] as? String)!, passedUserIDPostingThis: (n?["userIDPostingThis"] as? String)!, passedZip: (n?["zip"] as? String)!, passedFacilityUid: (n?["facilityUid"] as? String)!)
                     self.pins.append(tempInfo)
                     self.addMapNotation(tempFacility: tempInfo)
                 }

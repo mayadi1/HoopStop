@@ -20,8 +20,9 @@ class FacilityPinInfo {
     var streetAddress: String?
     var userIDPostingThis: String?
     var zip: String?
+    var facilityUid: String?
     
-    init(passedAddedDate: Double, passedAdditionalFacilityInfo: String, passedCity: String, passedFacilityPhoto: String, passedLat: Double, passedLong: Double, passedName: String, passedState: String, passedStreetAddress: String, passedUserIDPostingThis: String, passedZip: String){
+    init(passedAddedDate: Double, passedAdditionalFacilityInfo: String, passedCity: String, passedFacilityPhoto: String, passedLat: Double, passedLong: Double, passedName: String, passedState: String, passedStreetAddress: String, passedUserIDPostingThis: String, passedZip: String, passedFacilityUid: String){
 
         self.addedDate = passedAddedDate
         self.additionalFacilityInfo = passedAdditionalFacilityInfo
@@ -34,5 +35,6 @@ class FacilityPinInfo {
         self.streetAddress = passedStreetAddress
         self.userIDPostingThis = passedUserIDPostingThis
         self.zip = passedZip
+        self.facilityUid = passedFacilityUid
     }
 }

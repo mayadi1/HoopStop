@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     var passedPin = [FacilityPinInfo]()
@@ -67,7 +68,15 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     }
 
     @IBAction func okButtonPressed(_ sender: Any) {
-        self.dismiss(animated: true) {
+        if(self.okButton.title == "Delete"){
+            let ref = FIRDatabase.database().reference().child("facilities").child(self.passedPin[0].zip!).child(self.passedPin[0].facilityUid!)
+            ref.removeValue()
+            SVProgressHUD.showSuccess(withStatus: "Facility removed!")
+            self.dismiss(animated: true) {
+            }
+        }else{
+            self.dismiss(animated: true) {
+            }
         }
     }
     
