@@ -11,8 +11,23 @@ import MapKit
 import Firebase
 import FirebaseAuth
 
-class Facilities: UIViewController, MKMapViewDelegate{
-
+class Facilities: UIViewController, MKMapViewDelegate, deleteButtonDelegate{
+    internal func deleteButtonTap(name: String){
+        for pin in self.pins{
+            if pin.facilityUid == name{
+                latToRemove = pin.lat!
+                longToRemove = pin.long!
+            }
+        }
+        let annotations = self.mapView.annotations
+        for annotation in annotations{
+            if annotation.coordinate.latitude == latToRemove && annotation.coordinate.longitude == longToRemove{
+                self.mapView.removeAnnotation(annotation)
+            }
+        }
+    }
+    var latToRemove = 0.0
+    var longToRemove = 0.0
     var pins = [FacilityPinInfo]()
     @IBOutlet weak var mapView: MKMapView!
     let ref = FIRDatabase.database().reference()
@@ -31,14 +46,14 @@ class Facilities: UIViewController, MKMapViewDelegate{
             print("true")
             self.retriveInfo()
         }
-
+        
         self.locationManager.startUpdatingLocation()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.newFacilityImage = self.ResizeImage(image: UIImage(named: "facilityImage")!,targetSize: CGSize(width: 60, height: 80.0))
-               mapView.showsUserLocation = true
+        mapView.showsUserLocation = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,7 +67,7 @@ class Facilities: UIViewController, MKMapViewDelegate{
         }
         locationManager.stopUpdatingLocation()
     }
-
+    
     func retriveInfo() ->Void{
         let conditionall = ref.child("facilities")
         conditionall.observe(.childAdded, with:  { (snapshot) in
@@ -85,47 +100,48 @@ class Facilities: UIViewController, MKMapViewDelegate{
         if annotation is MKUserLocation {
             return nil
         }
-            let reuseId = "pin"
-            var anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
-            anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            anView?.rightCalloutAccessoryView = UIButton(type: .infoDark)
-            for item in self.pins{
-                if (item.lat == annotation.coordinate.latitude && item.long == annotation.coordinate.longitude && item.facilityPhoto != "NoPhoto"){
+        let reuseId = "pin"
+        var anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+        anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+        anView?.rightCalloutAccessoryView = UIButton(type: .infoDark)
+        for item in self.pins{
+            if (item.lat == annotation.coordinate.latitude && item.long == annotation.coordinate.longitude && item.facilityPhoto != "NoPhoto"){
                 let url = URL(string: item.facilityPhoto!)
                 DispatchQueue.global().async {
                     let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                        DispatchQueue.main.async {
-                            let image = self.ResizeImage(image:  UIImage(data: data!)!,targetSize: CGSize(width: 60, height: 80.0))
-                            anView?.leftCalloutAccessoryView = UIImageView.init(image: image)
-                        }
+                    DispatchQueue.main.async {
+                        let image = self.ResizeImage(image:  UIImage(data: data!)!,targetSize: CGSize(width: 60, height: 80.0))
+                        anView?.leftCalloutAccessoryView = UIImageView.init(image: image)
                     }
-                }else{
-                    anView?.leftCalloutAccessoryView = UIImageView.init(image: self.newFacilityImage)
                 }
+            }else{
+                anView?.leftCalloutAccessoryView = UIImageView.init(image: self.newFacilityImage)
             }
-            anView?.leftCalloutAccessoryView = UIImageView.init(image: self.newFacilityImage)
-            anView?.image = UIImage(named: "facilityE")
-            anView?.canShowCallout = true
-            anView?.isUserInteractionEnabled = true
-            return anView
+        }
+        anView?.leftCalloutAccessoryView = UIImageView.init(image: self.newFacilityImage)
+        anView?.image = UIImage(named: "facilityE")
+        anView?.canShowCallout = true
+        anView?.isUserInteractionEnabled = true
+        return anView
     }
     
-        func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl){
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl){
         if control == view.rightCalloutAccessoryView {
-        let selectedAnnotation = view.annotation
+            let selectedAnnotation = view.annotation
             for item in pins{
                 if (item.lat == selectedAnnotation?.coordinate.latitude && item.long == selectedAnnotation?.coordinate.longitude){
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "showPinInfoVC") as! ShowPinInfoViewController
                     vc.passedPin = [item]
+                    vc.delegate = self
                     self.mapView.deselectAnnotation(selectedAnnotation, animated: false)
                     self.present(vc, animated: true) {
                     }
-    
+                    
                 }
             }
-            }
         }
+    }
     
     func ResizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
         let size = image.size

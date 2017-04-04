@@ -9,8 +9,12 @@
 import UIKit
 import Firebase
 import SVProgressHUD
+protocol deleteButtonDelegate {
+    func deleteButtonTap(name: String)
+}
 
 class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
+    var delegate: deleteButtonDelegate?
     var passedPin = [FacilityPinInfo]()
     var users = [UserInfoViewController]()
     @IBOutlet weak var inviteSwitch: UISwitch!
@@ -23,7 +27,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     let usersFef = FIRDatabase.database().reference().child("users")
     let userID = FIRAuth.auth()?.currentUser?.uid
     var invite = "Public"
-
+    
     @IBOutlet weak var okButton: UIBarButtonItem!
     @IBOutlet weak var showFacilityInfoButton: UIButton!
     
@@ -51,7 +55,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
         self.retriveUserInfo()
         signInOutSwitch.addTarget(self, action: #selector(self.signInOutSwitchSwitchChanged), for: .valueChanged)
         inviteSwitch.addTarget(self, action: #selector(self.inviteSwitchSwitchChanged), for: .valueChanged)
-
+        
         self.navItem.title = passedPin[0].name
         if(passedPin[0].facilityPhoto == "NoPhoto"){
             self.image.image = UIImage(named: "facilityImage")
@@ -61,16 +65,17 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
             self.address.text = self.passedPin[0].streetAddress! + ", " + self.passedPin[0].city! + ", " + self.passedPin[0].state! + ", " + self.passedPin[0].zip!
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     @IBAction func okButtonPressed(_ sender: Any) {
         if(self.okButton.title == "Delete"){
             let ref = FIRDatabase.database().reference().child("facilities").child(self.passedPin[0].zip!).child(self.passedPin[0].facilityUid!)
             ref.removeValue()
+            deleteButtonTap()
             SVProgressHUD.showSuccess(withStatus: "Facility removed!")
             self.dismiss(animated: true) {
             }
@@ -92,18 +97,20 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
             self.view.addSubview(self.tableView)
         }
         if(self.showFacilityInfoButton.titleLabel?.text == "Show Facility info"){
-        self.showFacilityInfoButton.setTitle("Show Members", for: .normal)
-        let textView = UITextView(frame: tableView.frame)
-        textView.text = self.passedPin[0].additionalFacilityInfo
-        textView.isUserInteractionEnabled = false
-        textView.backgroundColor = UIColor.yellow
-        textView.font = UIFont.boldSystemFont(ofSize: 22)
-        self.tableView.isUserInteractionEnabled = false
-        self.view.addSubview(textView)
+            self.showFacilityInfoButton.setTitle("Show Members", for: .normal)
+            let textView = UITextView(frame: tableView.frame)
+            textView.text = self.passedPin[0].additionalFacilityInfo
+            textView.isUserInteractionEnabled = false
+            textView.backgroundColor = UIColor.yellow
+            textView.font = UIFont.boldSystemFont(ofSize: 22)
+            self.tableView.isUserInteractionEnabled = false
+            self.view.addSubview(textView)
             return
         }
     }
-    
+    func deleteButtonTap(){
+        delegate?.deleteButtonTap(name: self.passedPin[0].facilityUid!)
+    }
     func signInOutSwitchSwitchChanged(){
         if(self.signInOutSwitch.isOn == true){
             self.signInLabel.text = "You are now here"
@@ -141,7 +148,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
         var found = false
         for facility in self.users[indexPath.row].invitedAt{
             if (facility == self.navItem.title){
-               found = true
+                found = true
             }
         }
         if (found == true){
@@ -153,12 +160,12 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
         }
         
         DispatchQueue.main.async {
-        cell.imageView?.downloadedFrom(link: self.users[indexPath.row].userProfilePic!)
-        //cell.imageView?.layer.cornerRadius = (cell.imageView?.frame.size.width)! / 2.0
+            cell.imageView?.downloadedFrom(link: self.users[indexPath.row].userProfilePic!)
+            //cell.imageView?.layer.cornerRadius = (cell.imageView?.frame.size.width)! / 2.0
         }
         cell.imageView?.contentMode = .scaleAspectFill
         cell.imageView?.clipsToBounds = true
-
+        
         if (self.users[indexPath.row].signedInAt == "Not signed in at any facility"){
             cell.detailTextLabel?.text = self.users[indexPath.row].signedInAt
             cell.detailTextLabel?.backgroundColor = UIColor.white
@@ -189,7 +196,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     let selectedUsersFef = FIRDatabase.database().reference().child("users").child(users[indexPath.row].userUid!).child("invitedAt")
+        let selectedUsersFef = FIRDatabase.database().reference().child("users").child(users[indexPath.row].userUid!).child("invitedAt")
         selectedUsersFef.observe(.value, with: { (snapshot) in
             self.users[indexPath.row].invitedAt = snapshot.value as! [String]
             self.tableView.reloadData()
@@ -230,7 +237,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
         
         return newImage!
     }
-
+    
     func selectPhoto(_ tap: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "fullImageView") as! FullScreenImageViewController
@@ -238,4 +245,5 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
         self.present(vc, animated: true) {
         }
     }
+    
 }
