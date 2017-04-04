@@ -33,12 +33,23 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         self.usersFef.child(userID!).child("signedInAt").observe(.value, with: { (snapshot) in
-            if (snapshot.value as! String == self.navItem.title!){
+           let string = snapshot.value as! String
+            if string.range(of: self.navItem.title!) != nil{
                 self.signInOutSwitch.isOn = true
                 self.signInLabel.text = "You are now here"
                 for user in self.users{
                     if (user.userUid == self.userID){
-                        user.signedInAt = self.navItem.title
+                        let date = Date()
+                        let calendar = Calendar.current
+                        let hour = String(calendar.component(.hour, from: date))
+                        let min = String(calendar.component(.minute, from: date))
+                        let year = String(calendar.component(.year, from: date))
+                        let month = String(calendar.component(.month, from: date))
+                        let day = String(calendar.component(.day, from: date))
+                        let dateToPass = hour + ":" + min + ". "
+                        let fullDateToPass = dateToPass + day + "/" + month + "/" + year
+                        let stringToPassIn = self.navItem.title! + " @" + fullDateToPass
+                        user.signedInAt = stringToPassIn
                         self.tableView.reloadData()
                     }
                 }
@@ -114,7 +125,18 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     func signInOutSwitchSwitchChanged(){
         if(self.signInOutSwitch.isOn == true){
             self.signInLabel.text = "You are now here"
-            usersFef.child((FIRAuth.auth()?.currentUser?.uid)!).child("signedInAt").setValue(self.passedPin[0].name)
+            let date = Date()
+            let calendar = Calendar.current
+            let hour = String(calendar.component(.hour, from: date))
+            let min = String(calendar.component(.minute, from: date))
+            let year = String(calendar.component(.year, from: date))
+            let month = String(calendar.component(.month, from: date))
+            let day = String(calendar.component(.day, from: date))
+            
+            let dateToPass = hour + ":" + min + ". "
+            let fullDateToPass = dateToPass + day + "/" + month + "/" + year
+            let stringToPassIn = self.passedPin[0].name! + " @" + fullDateToPass
+            usersFef.child((FIRAuth.auth()?.currentUser?.uid)!).child("signedInAt").setValue(stringToPassIn)
         }else{
             usersFef.child((FIRAuth.auth()?.currentUser?.uid)!).child("signedInAt").setValue("Not signed in at any facility")
             for user in self.users{
