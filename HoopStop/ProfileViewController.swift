@@ -11,9 +11,22 @@ import Firebase
 import SVProgressHUD
 import MessageUI
 import Social
+//
+//  ProfileViewController.swift
+//  HoopStop
+//
+//  Created by Mohamed Ayadi on 2/22/17.
+//  Copyright © 2017 Mohamed Ayadi. All rights reserved.
+//
+
+import UIKit
+import Firebase
+import SVProgressHUD
+import MessageUI
+import Social
 
 class ProfileViewController: UIViewController,MFMailComposeViewControllerDelegate {
-
+    
     @IBOutlet weak var editProfileButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     
@@ -35,7 +48,7 @@ class ProfileViewController: UIViewController,MFMailComposeViewControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -73,7 +86,7 @@ class ProfileViewController: UIViewController,MFMailComposeViewControllerDelegat
             }
         }
     }
-
+    
     @IBAction func singUpButtonPressed(_ sender: Any) {
         FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
             if user != nil {
@@ -113,8 +126,19 @@ class ProfileViewController: UIViewController,MFMailComposeViewControllerDelegat
         vc?.setInitialText("Have you used HoopStop yet?")
         self.present(vc!, animated: true, completion: nil)
     }
-    @IBAction func aboutButtonPressed(_ sender: Any) {
-        UIApplication.shared.openURL(NSURL(string: "http://www.hoopstop.net")! as URL)
+    
+    //Tanoi has modified this IBAction function
+    @IBAction func aboutButtonPressed(_ sender: Any)
+    {
+        //Tanoi commented this out
+        //        UIApplication.shared.openURL(NSURL(string: "http://www.hoopstop.net")! as URL)
+        
+        //Tanoi: 04/03/17 replaced above with this because the compiler said had been deprecated
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(NSURL(string: "http://www.hoopstop.net")! as URL, options: [:], completionHandler: nil)
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
