@@ -312,10 +312,8 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
         }
     }
     @IBAction func directionButtonTapped(_ sender: Any) {
-        
         let latitude: CLLocationDegrees = (self.passedPin.first?.lat)!
         let longitude: CLLocationDegrees = (self.passedPin.first?.long)!
-        
         let regionDistance:CLLocationDistance = 10000
         let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
         let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)

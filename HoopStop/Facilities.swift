@@ -12,6 +12,7 @@ import Firebase
 import FirebaseAuth
 
 class Facilities: UIViewController, MKMapViewDelegate, deleteButtonDelegate{
+    @IBOutlet weak var chooseACourtLabel: UILabel!
     internal func deleteButtonTap(name: String){
         for pin in self.pins{
             if pin.facilityUid == name{
@@ -126,6 +127,7 @@ class Facilities: UIViewController, MKMapViewDelegate, deleteButtonDelegate{
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl){
+        self.chooseACourtLabel.isHidden = true
         if control == view.rightCalloutAccessoryView {
             let selectedAnnotation = view.annotation
             for item in pins{
