@@ -145,7 +145,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
                     self.tableView.reloadData()
                 }
             }
-            self.signInLabel.text = "You can sign in here"
+            self.signInLabel.text = "HOOP HERE"
         }
     }
     
