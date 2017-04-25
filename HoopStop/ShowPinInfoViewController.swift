@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import SVProgressHUD
+import MapKit
+
 protocol deleteButtonDelegate {
     func deleteButtonTap(name: String)
 }
@@ -308,5 +310,22 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
             let vc = segue.destination as! AddCommentViewController
             vc.passedPin = self.passedPin
         }
+    }
+    @IBAction func directionButtonTapped(_ sender: Any) {
+        
+        let latitude: CLLocationDegrees = (self.passedPin.first?.lat)!
+        let longitude: CLLocationDegrees = (self.passedPin.first?.long)!
+        
+        let regionDistance:CLLocationDistance = 10000
+        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+        let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+        let options = [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+        ]
+        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = self.passedPin.first?.name
+        mapItem.openInMaps(launchOptions: options)
     }
 }

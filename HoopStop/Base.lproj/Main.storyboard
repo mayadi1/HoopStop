@@ -587,6 +587,19 @@
                                     <outlet property="delegate" destination="01q-KQ-uGV" id="bV1-Ja-ekM"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YO7-Dg-eZx">
+                                <rect key="frame" x="0.0" y="50" width="70" height="30"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="zXj-09-ArE"/>
+                                </constraints>
+                                <state key="normal" title="Directions">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="directionButtonTapped:" destination="01q-KQ-uGV" eventType="touchUpInside" id="PrG-Ju-Ib9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -615,6 +628,8 @@
                             <constraint firstAttribute="trailingMargin" secondItem="tEP-g2-AWD" secondAttribute="trailing" constant="22" id="jO3-nf-Lt0"/>
                             <constraint firstItem="3Jf-ng-uO3" firstAttribute="leading" secondItem="dGA-5u-7ly" secondAttribute="leadingMargin" constant="59" id="nfo-6s-QTE"/>
                             <constraint firstItem="dRe-Su-2Kx" firstAttribute="trailing" secondItem="qKT-wf-04v" secondAttribute="trailing" id="oWb-BN-92v"/>
+                            <constraint firstItem="YO7-Dg-eZx" firstAttribute="leading" secondItem="dGA-5u-7ly" secondAttribute="leading" id="sp6-Fq-der"/>
+                            <constraint firstItem="YO7-Dg-eZx" firstAttribute="top" secondItem="fyn-Ul-S8A" secondAttribute="bottom" id="wQm-GX-mtf"/>
                             <constraint firstAttribute="trailing" secondItem="fyn-Ul-S8A" secondAttribute="trailing" id="x4v-KG-dZf"/>
                         </constraints>
                     </view>
@@ -637,7 +652,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9nS-gA-5g9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1080" y="1272"/>
+            <point key="canvasLocation" x="-1081.1594202898552" y="1271.7391304347827"/>
         </scene>
         <!--submitNewFacility-->
         <scene sceneID="gGq-ZH-Mon">
