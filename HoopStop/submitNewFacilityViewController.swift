@@ -98,7 +98,8 @@ class submitNewFacilityViewController: UIViewController,UITextViewDelegate,UITex
         rootRef.child("facilities").child(self.zip.text!).child("\(autoChild)").child("city").setValue(self.city.text)
         rootRef.child("facilities").child(self.zip.text!).child("\(autoChild)").child("state").setValue(self.state.text)
         rootRef.child("facilities").child(self.zip.text!).child("\(autoChild)").child("zip").setValue(self.zip.text)
-       
+        rootRef.child("facilities").child(self.zip.text!).child("\(autoChild)").child("forum").setValue(["first"])
+
         if(additionalFacilityInfo.text == "Additional Facility Info"){
             rootRef.child("facilities").child(self.zip.text!).child("\(autoChild)").child("additionalFacilityInfo").setValue("No Info")
 
