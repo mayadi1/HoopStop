@@ -15,7 +15,7 @@ class TutorialView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let titles = ["Touch and turn the hexagon","Select the same color as the ball","If the color is different the ball fall","Plays with both hands to spin faster"]
+        let titles = ["Tap on facility to see information","Find specific location to submit new facility","Sign in/out from facility using switcher","Use the invite button to invite friends to facility"]
         let images = ["img1","img2","img3","img4"]
         window.basicView(ViewController: self, arrayImages: images, arrayTitles: titles)
     }
