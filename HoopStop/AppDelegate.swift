@@ -55,6 +55,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
                                                name: .firInstanceIDTokenRefresh,
                                                object: nil)
         // [END add_token_refresh_observer]
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if launchedBefore  {
+            print("Not first launch.")
+        } else {
+            print("First launch, setting UserDefault.")
+            
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            
+            let storyboard = UIStoryboard(name: "Tutorial", bundle: nil)
+            
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "InstructView") as UIViewController
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+        }
         return true
     }
     

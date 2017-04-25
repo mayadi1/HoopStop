@@ -18,6 +18,13 @@
 		18A97C621E5E9FAA00F62427 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A97C611E5E9FAA00F62427 /* ProfileViewController.swift */; };
 		18A97C641E5EABA300F62427 /* submitNewFacilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A97C631E5EABA300F62427 /* submitNewFacilityViewController.swift */; };
 		18AD4DD21E6010E200E4797F /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AD4DD11E6010E200E4797F /* EditProfileViewController.swift */; };
+		18AF56481EAF043C00EEC8A4 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18AF56471EAF043C00EEC8A4 /* Tutorial.storyboard */; };
+		18AF564A1EAF045C00EEC8A4 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF56491EAF045C00EEC8A4 /* TutorialView.swift */; };
+		18AF564C1EAF04CC00EEC8A4 /* windowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF564B1EAF04CC00EEC8A4 /* windowView.swift */; };
+		18AF56511EAF06B800EEC8A4 /* arrowLFT.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AF564D1EAF06B800EEC8A4 /* arrowLFT.png */; };
+		18AF56521EAF06B800EEC8A4 /* arrowRGT.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AF564E1EAF06B800EEC8A4 /* arrowRGT.png */; };
+		18AF56531EAF06B800EEC8A4 /* bola1.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AF564F1EAF06B800EEC8A4 /* bola1.png */; };
+		18AF56541EAF06B800EEC8A4 /* bola2.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AF56501EAF06B800EEC8A4 /* bola2.png */; };
 		18C59F8B1E5D8C96005F61D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C59F8A1E5D8C96005F61D7 /* AppDelegate.swift */; };
 		18C59F8D1E5D8C96005F61D7 /* Facilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C59F8C1E5D8C96005F61D7 /* Facilities.swift */; };
 		18C59F901E5D8C96005F61D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18C59F8E1E5D8C96005F61D7 /* Main.storyboard */; };
@@ -41,6 +48,13 @@
 		18A97C611E5E9FAA00F62427 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		18A97C631E5EABA300F62427 /* submitNewFacilityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = submitNewFacilityViewController.swift; sourceTree = "<group>"; };
 		18AD4DD11E6010E200E4797F /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		18AF56471EAF043C00EEC8A4 /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
+		18AF56491EAF045C00EEC8A4 /* TutorialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		18AF564B1EAF04CC00EEC8A4 /* windowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = windowView.swift; sourceTree = "<group>"; };
+		18AF564D1EAF06B800EEC8A4 /* arrowLFT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowLFT.png; sourceTree = "<group>"; };
+		18AF564E1EAF06B800EEC8A4 /* arrowRGT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowRGT.png; sourceTree = "<group>"; };
+		18AF564F1EAF06B800EEC8A4 /* bola1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bola1.png; sourceTree = "<group>"; };
+		18AF56501EAF06B800EEC8A4 /* bola2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bola2.png; sourceTree = "<group>"; };
 		18C59F871E5D8C96005F61D7 /* HoopStop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoopStop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18C59F8A1E5D8C96005F61D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18C59F8C1E5D8C96005F61D7 /* Facilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facilities.swift; sourceTree = "<group>"; };
@@ -95,6 +109,9 @@
 				18C59F8C1E5D8C96005F61D7 /* Facilities.swift */,
 				1867752B1E6100B200E132FB /* FacilityPinInfo.swift */,
 				18A97C611E5E9FAA00F62427 /* ProfileViewController.swift */,
+				18AF56471EAF043C00EEC8A4 /* Tutorial.storyboard */,
+				18AF56491EAF045C00EEC8A4 /* TutorialView.swift */,
+				18AF564B1EAF04CC00EEC8A4 /* windowView.swift */,
 				18C59F8E1E5D8C96005F61D7 /* Main.storyboard */,
 				18F87BEF1E77FDF300B6AAAB /* FullScreenImageViewController.swift */,
 				182C06EF1E67CBFF007B7F97 /* ResetMyPasswordViewController.swift */,
@@ -111,6 +128,10 @@
 				18C59F931E5D8C96005F61D7 /* LaunchScreen.storyboard */,
 				187E41061E67DDE600D34DCA /* GoogleService-Info.plist */,
 				18C59F961E5D8C96005F61D7 /* Info.plist */,
+				18AF564D1EAF06B800EEC8A4 /* arrowLFT.png */,
+				18AF564E1EAF06B800EEC8A4 /* arrowRGT.png */,
+				18AF564F1EAF06B800EEC8A4 /* bola1.png */,
+				18AF56501EAF06B800EEC8A4 /* bola2.png */,
 			);
 			path = HoopStop;
 			sourceTree = "<group>";
@@ -203,9 +224,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18AF56481EAF043C00EEC8A4 /* Tutorial.storyboard in Resources */,
 				18C59F951E5D8C96005F61D7 /* LaunchScreen.storyboard in Resources */,
+				18AF56541EAF06B800EEC8A4 /* bola2.png in Resources */,
 				187E41071E67DDE600D34DCA /* GoogleService-Info.plist in Resources */,
+				18AF56531EAF06B800EEC8A4 /* bola1.png in Resources */,
 				18C59F921E5D8C96005F61D7 /* Assets.xcassets in Resources */,
+				18AF56521EAF06B800EEC8A4 /* arrowRGT.png in Resources */,
+				18AF56511EAF06B800EEC8A4 /* arrowLFT.png in Resources */,
 				18C59F901E5D8C96005F61D7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +293,7 @@
 			files = (
 				185887DF1E67AC9D00C9C6F7 /* LocationSearchTableViewController.swift in Sources */,
 				1867752C1E6100B200E132FB /* FacilityPinInfo.swift in Sources */,
+				18AF564C1EAF04CC00EEC8A4 /* windowView.swift in Sources */,
 				18F87BF01E77FDF300B6AAAB /* FullScreenImageViewController.swift in Sources */,
 				18F0C5711E65F8D5008ADA93 /* ShowPinInfoViewController.swift in Sources */,
 				18A97C601E5E9D0900F62427 /* LoginViewController.swift in Sources */,
@@ -277,6 +304,7 @@
 				185887DD1E67AC8A00C9C6F7 /* ViewController.swift in Sources */,
 				18A97C641E5EABA300F62427 /* submitNewFacilityViewController.swift in Sources */,
 				188F45A41E66BBA3009C0836 /* InviteDisinviteViewController.swift in Sources */,
+				18AF564A1EAF045C00EEC8A4 /* TutorialView.swift in Sources */,
 				18F0C5731E6620BA008ADA93 /* UserInfoViewController.swift in Sources */,
 				18C59F8B1E5D8C96005F61D7 /* AppDelegate.swift in Sources */,
 				18AD4DD21E6010E200E4797F /* EditProfileViewController.swift in Sources */,
