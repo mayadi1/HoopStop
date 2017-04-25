@@ -15,6 +15,7 @@ protocol deleteButtonDelegate {
 
 class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     var delegate: deleteButtonDelegate?
+    var comments: [String]?
     var passedPin = [FacilityPinInfo]()
     var users = [UserInfoViewController]()
     @IBOutlet weak var inviteSwitch: UISwitch!
@@ -28,10 +29,19 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     let userID = FIRAuth.auth()?.currentUser?.uid
     var invite = "Public"
     
+    @IBOutlet weak var tableView2: UITableView!
     @IBOutlet weak var okButton: UIBarButtonItem!
     @IBOutlet weak var showFacilityInfoButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
+       
+        let ref22 = FIRDatabase.database().reference().child("facilities").child(self.passedPin[0].zip!).child(self.passedPin[0].facilityUid!).child("forum")
+        
+        ref22.observe(.value, with: { (snapshotMe) in
+            self.comments = snapshotMe.value as? [String]
+            
+           self.tableView2.reloadData()
+        })
         self.usersFef.child(userID!).child("signedInAt").observe(.value, with: { (snapshot) in
            let string = snapshot.value as! String
             if string.range(of: self.navItem.title!) != nil{
@@ -103,19 +113,22 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     }
     @IBAction func showFacilityInfoButtonPressed(_ sender: Any) {
         if(self.showFacilityInfoButton.titleLabel?.text == "Show Members"){
-            self.showFacilityInfoButton.setTitle("Show Facility info", for: .normal)
+            self.showFacilityInfoButton.setTitle("Show/Add Comments", for: .normal)
             self.tableView.isUserInteractionEnabled = true
-            self.view.addSubview(self.tableView)
+            self.tableView2.isHidden = true
+//          self.view.addSubview(self.tableView)
         }
-        if(self.showFacilityInfoButton.titleLabel?.text == "Show Facility info"){
+        if(self.showFacilityInfoButton.titleLabel?.text == "Show/Add Comments"){
+            self.tableView2.frame = self.tableView.frame
+            self.tableView2.isHidden = false
             self.showFacilityInfoButton.setTitle("Show Members", for: .normal)
-            let textView = UITextView(frame: tableView.frame)
-            textView.text = self.passedPin[0].additionalFacilityInfo
-            textView.isUserInteractionEnabled = false
-            textView.backgroundColor = UIColor.yellow
-            textView.font = UIFont.boldSystemFont(ofSize: 22)
+//            let textView = UITextView(frame: tableView.frame)
+//            textView.text = self.passedPin[0].additionalFacilityInfo
+//            textView.isUserInteractionEnabled = false
+//            textView.backgroundColor = UIColor.yellow
+//            textView.font = UIFont.boldSystemFont(ofSize: 22)
             self.tableView.isUserInteractionEnabled = false
-            self.view.addSubview(textView)
+            //self.view.addSubview(textView)
             return
         }
     }
@@ -165,8 +178,12 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.imageView?.image = UIImage(named: "profile-1")
+        var cell:UITableViewCell?
+
+        if tableView == self.tableView {
+
+        cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell?.imageView?.image = UIImage(named: "profile-1")
         var found = false
         for facility in self.users[indexPath.row].invitedAt{
             if (facility == self.navItem.title){
@@ -174,32 +191,48 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
             }
         }
         if (found == true){
-            cell.textLabel?.text = users[indexPath.row].name! + "*Invited"
-            cell.textLabel?.backgroundColor = UIColor.yellow
+            cell?.textLabel?.text = users[indexPath.row].name! + "*Invited"
+            cell?.textLabel?.backgroundColor = UIColor.yellow
         }
         if ( found == false){
-            cell.textLabel?.text = users[indexPath.row].name
+            cell?.textLabel?.text = users[indexPath.row].name
         }
         
         DispatchQueue.main.async {
-            cell.imageView?.downloadedFrom(link: self.users[indexPath.row].userProfilePic!)
+            cell?.imageView?.downloadedFrom(link: self.users[indexPath.row].userProfilePic!)
             //cell.imageView?.layer.cornerRadius = (cell.imageView?.frame.size.width)! / 2.0
         }
-        cell.imageView?.contentMode = .scaleAspectFill
-        cell.imageView?.clipsToBounds = true
+        cell?.imageView?.contentMode = .scaleAspectFill
+        cell?.imageView?.clipsToBounds = true
         
         if (self.users[indexPath.row].signedInAt == "Not signed in at any facility"){
-            cell.detailTextLabel?.text = self.users[indexPath.row].signedInAt
-            cell.detailTextLabel?.backgroundColor = UIColor.white
+            cell?.detailTextLabel?.text = self.users[indexPath.row].signedInAt
+            cell?.detailTextLabel?.backgroundColor = UIColor.white
         }else{
-            cell.detailTextLabel?.text = "Signed in At: " + self.users[indexPath.row].signedInAt!
-            cell.detailTextLabel?.backgroundColor = UIColor.green
+            cell?.detailTextLabel?.text = "Signed in At: " + self.users[indexPath.row].signedInAt!
+            cell?.detailTextLabel?.backgroundColor = UIColor.green
         }
-        return cell
+        }else{
+            cell = tableView.dequeueReusableCell(withIdentifier: "cellTwo", for: indexPath)
+            cell!.textLabel!.text = self.comments?[indexPath.row]
+        }
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.users.count
+        var count = 0
+        
+        if tableView == self.tableView {
+            count = self.users.count
+        }
+        
+        if tableView == self.tableView2 {
+            if let n = self.comments?.count{
+                 count = n
+            }
+        }
+        
+        return count
     }
     
     func retriveUserInfo(){
@@ -218,6 +251,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == self.tableView {
         let selectedUsersFef = FIRDatabase.database().reference().child("users").child(users[indexPath.row].userUid!).child("invitedAt")
         selectedUsersFef.observe(.value, with: { (snapshot) in
             self.users[indexPath.row].invitedAt = snapshot.value as! [String]
@@ -232,6 +266,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
         vc.passedName = self.navItem.title
         tableView.deselectRow(at: indexPath, animated: false)
         self.present(vc, animated: true) {}
+        }
     }
     
     func ResizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
@@ -268,4 +303,10 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "CommentVc"){
+            let vc = segue.destination as! AddCommentViewController
+            vc.passedPin = self.passedPin
+        }
+    }
 }
