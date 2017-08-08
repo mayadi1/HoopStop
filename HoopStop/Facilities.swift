@@ -171,7 +171,7 @@ class Facilities: UIViewController, MKMapViewDelegate, deleteButtonDelegate{
     }
     
     func zoomToUserLocation(){
-        self.mapView.setRegion(MKCoordinateRegionMake((self.locationManager.location?.coordinate)!, MKCoordinateSpanMake(0.6, 0.6)), animated: false)
+        self.mapView.setRegion(MKCoordinateRegionMake((self.locationManager.location?.coordinate)!, MKCoordinateSpanMake(0.1, 0.1)), animated: false)
         self.zoomChecker = false
     }
     
