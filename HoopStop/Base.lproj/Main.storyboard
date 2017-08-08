@@ -497,7 +497,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="dVf-VZ-5cn"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -615,7 +615,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="dRe-Su-2Kx" firstAttribute="leading" secondItem="GEk-Qz-7p0" secondAttribute="leading" id="1Hb-KB-EZM"/>
                             <constraint firstItem="fyn-Ul-S8A" firstAttribute="leading" secondItem="dGA-5u-7ly" secondAttribute="leading" id="5aW-un-Nkh"/>
