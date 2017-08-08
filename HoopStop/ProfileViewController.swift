@@ -30,6 +30,7 @@ class ProfileViewController: UIViewController,MFMailComposeViewControllerDelegat
     @IBOutlet weak var editProfileButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     
+    @IBOutlet weak var signUpBtn: UIButton!
     override func viewWillAppear(_ animated: Bool) {
         self.isEditing = false
         FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
@@ -38,9 +39,11 @@ class ProfileViewController: UIViewController,MFMailComposeViewControllerDelegat
                 DispatchQueue.main.async {() -> Void in
                     self.loginButton.setTitle("Sign Out", for: .normal)
                     self.editProfileButton.isHidden = false
+                    self.signUpBtn.isHidden = true
                 }
             }else{
                 self.editProfileButton.isHidden = true
+                self.signUpBtn.isHidden = false
             }
         }
     }

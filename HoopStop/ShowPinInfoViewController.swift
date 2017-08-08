@@ -89,11 +89,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     @IBAction func okButtonPressed(_ sender: Any) {
         if(self.okButton.title == "Delete"){
             let ref = FIRDatabase.database().reference().child("facilities").child(self.passedPin[0].zip!).child(self.passedPin[0].facilityUid!)
