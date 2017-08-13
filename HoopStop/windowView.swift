@@ -1,8 +1,7 @@
 //
-//  windowView.swift
 //  HoopStop
 //
-//  Created by Mohamed Ayadi on 4/24/17.
+//  Created by Mohamed Ayadi on 2/1/17.
 //  Copyright © 2017 Mohamed Ayadi. All rights reserved.
 //
 

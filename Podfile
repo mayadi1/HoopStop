@@ -10,7 +10,6 @@ pod 'Firebase'
 pod ‘Firebase/Auth’
 pod 'Firebase/Database'
 pod 'Firebase/Storage’
-pod 'Firebase/Messaging'
 pod 'SVProgressHUD', '1.1.3'  
 pod 'Firebase/Core'
 
