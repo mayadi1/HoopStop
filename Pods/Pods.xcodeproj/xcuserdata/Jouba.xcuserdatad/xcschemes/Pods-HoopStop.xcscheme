@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "97B51965516DA8DC0BDABC884B8934E5"
+               BlueprintIdentifier = "A2E9A64DB5CE3501A32DD0F7CE0E37D1"
                BuildableName = "Pods_HoopStop.framework"
                BlueprintName = "Pods-HoopStop"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "97B51965516DA8DC0BDABC884B8934E5"
+            BlueprintIdentifier = "A2E9A64DB5CE3501A32DD0F7CE0E37D1"
             BuildableName = "Pods_HoopStop.framework"
             BlueprintName = "Pods-HoopStop"
             ReferencedContainer = "container:Pods.xcodeproj">

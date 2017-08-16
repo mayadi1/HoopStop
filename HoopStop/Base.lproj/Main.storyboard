@@ -343,15 +343,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wbI-HB-tt3">
-                                <rect key="frame" x="0.0" y="320" width="375" height="298"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i4F-ej-3y5">
+                                <rect key="frame" x="0.0" y="104" width="375" height="514"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signed in At:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEG-3I-fpp">
+                                <rect key="frame" x="0.0" y="20" width="138" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="138" id="Exv-8q-STJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdG-xf-tym">
+                                <rect key="frame" x="0.0" y="49" width="375" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invited At:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jf4-20-6Mf">
+                                <rect key="frame" x="0.0" y="75" width="138" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wdG-xf-tym" firstAttribute="trailing" secondItem="i4F-ej-3y5" secondAttribute="trailing" id="0va-cD-buy"/>
+                            <constraint firstItem="i4F-ej-3y5" firstAttribute="top" secondItem="Jf4-20-6Mf" secondAttribute="bottom" constant="8" symbolic="YES" id="2e1-8Y-exd"/>
+                            <constraint firstItem="Jf4-20-6Mf" firstAttribute="leading" secondItem="i4F-ej-3y5" secondAttribute="leading" id="Aru-43-MB1"/>
+                            <constraint firstAttribute="trailing" secondItem="wdG-xf-tym" secondAttribute="trailing" id="FHY-p9-1fe"/>
+                            <constraint firstItem="i4F-ej-3y5" firstAttribute="top" secondItem="wdG-xf-tym" secondAttribute="bottom" constant="20" id="Pkn-3t-b6S"/>
+                            <constraint firstItem="UEG-3I-fpp" firstAttribute="top" secondItem="7cj-vx-c6z" secondAttribute="bottom" id="RFI-S9-NOY"/>
+                            <constraint firstItem="UEG-3I-fpp" firstAttribute="trailing" secondItem="Jf4-20-6Mf" secondAttribute="trailing" id="XX0-BS-uEU"/>
+                            <constraint firstItem="wdG-xf-tym" firstAttribute="top" secondItem="UEG-3I-fpp" secondAttribute="bottom" constant="8" symbolic="YES" id="ekv-GI-yXA"/>
+                            <constraint firstItem="UEG-3I-fpp" firstAttribute="leading" secondItem="7aw-0x-YyV" secondAttribute="leading" id="laX-hN-FeK"/>
+                            <constraint firstItem="UEG-3I-fpp" firstAttribute="leading" secondItem="wdG-xf-tym" secondAttribute="leading" id="oKv-Pg-KW6"/>
+                            <constraint firstItem="i4F-ej-3y5" firstAttribute="bottom" secondItem="dpZ-mX-2Mw" secondAttribute="top" id="rcm-am-JxQ"/>
+                            <constraint firstItem="Jf4-20-6Mf" firstAttribute="top" secondItem="UEG-3I-fpp" secondAttribute="bottom" constant="34" id="wJw-FG-jFd"/>
+                            <constraint firstItem="wdG-xf-tym" firstAttribute="leading" secondItem="Jf4-20-6Mf" secondAttribute="leading" id="yKP-wN-djq"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Status" image="Status_check_mark_yes_circle-04-512" id="D14-7W-xMN"/>
+                    <connections>
+                        <outlet property="signedInAtLabel" destination="wdG-xf-tym" id="20W-Fq-DHG"/>
+                        <outlet property="tableView" destination="i4F-ej-3y5" id="jmC-hH-29i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qXn-Y9-fgV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

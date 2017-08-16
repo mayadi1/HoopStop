@@ -51,6 +51,9 @@ PODS:
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.8)
   - Protobuf (3.2.0)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - SVProgressHUD (1.1.3)
 
 DEPENDENCIES:
@@ -60,6 +63,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Messaging
   - Firebase/Storage
+  - SDWebImage (~> 3.8)
   - SVProgressHUD (= 1.1.3)
 
 SPEC CHECKSUMS:
@@ -74,8 +78,9 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
   Protobuf: 745f59e122e5de98d4d7ef291e264a0eef80f58e
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
 
-PODFILE CHECKSUM: 9bed2181fc1b48f33e89b456d25d2862b760d671
+PODFILE CHECKSUM: e84bcfde8f792d8715e839f579600bbb9b3748ef
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.2.0

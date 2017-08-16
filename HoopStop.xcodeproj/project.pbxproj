@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		182C06F01E67CBFF007B7F97 /* ResetMyPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C06EF1E67CBFF007B7F97 /* ResetMyPasswordViewController.swift */; };
 		184CA8F51F4432230053CA16 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184CA8F41F4432220053CA16 /* StatusViewController.swift */; };
+		185343BA1F44374300B54830 /* StackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185343B91F44374300B54830 /* StackViewCell.swift */; };
+		185343BC1F44388300B54830 /* StackViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185343BB1F44388300B54830 /* StackViewCell.xib */; };
 		185887DD1E67AC8A00C9C6F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185887DC1E67AC8A00C9C6F7 /* ViewController.swift */; };
 		185887DF1E67AC9D00C9C6F7 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185887DE1E67AC9D00C9C6F7 /* LocationSearchTableViewController.swift */; };
 		1865FA141E5DA9BF009A1918 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865FA131E5DA9BF009A1918 /* SignUpViewController.swift */; };
@@ -41,6 +43,8 @@
 /* Begin PBXFileReference section */
 		182C06EF1E67CBFF007B7F97 /* ResetMyPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetMyPasswordViewController.swift; sourceTree = "<group>"; };
 		184CA8F41F4432220053CA16 /* StatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
+		185343B91F44374300B54830 /* StackViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackViewCell.swift; sourceTree = "<group>"; };
+		185343BB1F44388300B54830 /* StackViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StackViewCell.xib; sourceTree = "<group>"; };
 		185887DC1E67AC8A00C9C6F7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		185887DE1E67AC9D00C9C6F7 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
 		1865FA131E5DA9BF009A1918 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -128,7 +132,9 @@
 				18A97C5F1E5E9D0900F62427 /* LoginViewController.swift */,
 				1865FA131E5DA9BF009A1918 /* SignUpViewController.swift */,
 				184CA8F41F4432220053CA16 /* StatusViewController.swift */,
+				185343B91F44374300B54830 /* StackViewCell.swift */,
 				18C59F911E5D8C96005F61D7 /* Assets.xcassets */,
+				185343BB1F44388300B54830 /* StackViewCell.xib */,
 				18AF56471EAF043C00EEC8A4 /* Tutorial.storyboard */,
 				18C59F8E1E5D8C96005F61D7 /* Main.storyboard */,
 				18C59F931E5D8C96005F61D7 /* LaunchScreen.storyboard */,
@@ -231,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18AF56481EAF043C00EEC8A4 /* Tutorial.storyboard in Resources */,
+				185343BC1F44388300B54830 /* StackViewCell.xib in Resources */,
 				18C59F951E5D8C96005F61D7 /* LaunchScreen.storyboard in Resources */,
 				18AF56541EAF06B800EEC8A4 /* bola2.png in Resources */,
 				187E41071E67DDE600D34DCA /* GoogleService-Info.plist in Resources */,
@@ -272,7 +279,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		9EFF26D055B0BF8197625D44 /* [CP] Embed Pods Frameworks */ = {
@@ -304,6 +311,7 @@
 				18F87BF01E77FDF300B6AAAB /* FullScreenImageViewController.swift in Sources */,
 				18F0C5711E65F8D5008ADA93 /* ShowPinInfoViewController.swift in Sources */,
 				18A97C601E5E9D0900F62427 /* LoginViewController.swift in Sources */,
+				185343BA1F44374300B54830 /* StackViewCell.swift in Sources */,
 				1865FA141E5DA9BF009A1918 /* SignUpViewController.swift in Sources */,
 				18A97C621E5E9FAA00F62427 /* ProfileViewController.swift in Sources */,
 				18C59F8D1E5D8C96005F61D7 /* Facilities.swift in Sources */,

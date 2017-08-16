@@ -13,5 +13,5 @@ pod 'Firebase/Storage’
 pod 'Firebase/Messaging'
 pod 'SVProgressHUD', '1.1.3'  
 pod 'Firebase/Core'
-
+pod 'SDWebImage', '~>3.8'
 end
