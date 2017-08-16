@@ -365,6 +365,20 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
         mapItem.name = self.passedPin.first?.name
         mapItem.openInMaps(launchOptions: options)
     }
+    
+
+    //self.navItem.title
+    //[users[indexPath.row]]
     @IBAction func inviteBtnPressed(_ sender: Any) {
+        print("iam pressed")
+        
+            for index in self.tickedIndexPaths{
+                print(users[index.row].name!)
+                users[index.row].invitedAt.append(self.navItem.title!)
+                usersFef.child(users[index.row].userUid!).child("invitedAt").setValue(users[index.row].invitedAt)
+                SVProgressHUD.showSuccess(withStatus: "Invite sent to " + "\(self.tickedIndexPaths.count)")
+                self.tableView.reloadData()
+            }
     }
+    
 }
