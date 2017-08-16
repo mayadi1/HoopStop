@@ -528,11 +528,11 @@
                                 <rect key="frame" x="20" y="347" width="374" height="330"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="iny-zZ-aa5" detailTextLabel="HoD-lz-yZo" rowHeight="73" style="IBUITableViewCellStyleSubtitle" id="Hkq-24-LzK">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="cell" textLabel="iny-zZ-aa5" detailTextLabel="HoD-lz-yZo" rowHeight="73" style="IBUITableViewCellStyleSubtitle" id="Hkq-24-LzK">
                                         <rect key="frame" x="0.0" y="28" width="374" height="73"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hkq-24-LzK" id="FYP-Fw-r0a">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="73"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="72.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iny-zZ-aa5">
@@ -602,7 +602,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YO7-Dg-eZx">
                                 <rect key="frame" x="0.0" y="50" width="70" height="30"/>
-                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="0.44270432692307693" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Directions">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>

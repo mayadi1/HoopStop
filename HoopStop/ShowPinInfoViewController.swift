@@ -179,7 +179,6 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
         var cell:UITableViewCell?
 
         if tableView == self.tableView {
-
         cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell?.imageView?.image = UIImage(named: "profile-1")
         var found = false
@@ -210,6 +209,9 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
             cell?.detailTextLabel?.text = "Signed in At: " + self.users[indexPath.row].signedInAt!
             cell?.detailTextLabel?.backgroundColor = UIColor.green
         }
+            if(!inviteSwitch.isOn){
+                cell?.accessoryType = UITableViewCellAccessoryType.none
+            }
         }else{
             cell = tableView.dequeueReusableCell(withIdentifier: "cellTwo", for: indexPath)
             cell!.textLabel!.text = self.comments?[indexPath.row]
@@ -252,23 +254,33 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == self.tableView {
-        let selectedUsersFef = FIRDatabase.database().reference().child("users").child(users[indexPath.row].userUid!).child("invitedAt")
-        selectedUsersFef.observe(.value, with: { (snapshot) in
-            self.users[indexPath.row].invitedAt = snapshot.value as! [String]
-            self.tableView.reloadData()
-        })
-        let cell = tableView.cellForRow(at: indexPath)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "InviteDisinvite") as! InviteDisinviteViewController
-        vc.passedUser = [users[indexPath.row]]
-        vc.passedImage = cell?.imageView?.image
-        vc.passedInviteType = self.invite
-        vc.passedName = self.navItem.title
-        tableView.deselectRow(at: indexPath, animated: false)
-        self.present(vc, animated: true) {}
+            if(!inviteSwitch.isOn){
+                let selectedUsersFef = FIRDatabase.database().reference().child("users").child(users[indexPath.row].userUid!).child("invitedAt")
+                selectedUsersFef.observe(.value, with: { (snapshot) in
+                self.users[indexPath.row].invitedAt = snapshot.value as! [String]
+                })
+                let cell = tableView.cellForRow(at: indexPath)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "InviteDisinvite")        as! InviteDisinviteViewController
+                vc.passedUser = [users[indexPath.row]]
+                vc.passedImage = cell?.imageView?.image
+                vc.passedInviteType = self.invite
+                vc.passedName = self.navItem.title
+                tableView.deselectRow(at: indexPath, animated: false)
+                self.present(vc, animated: true) {}
+            }else{
+                if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
+                    if cell.accessoryType == .checkmark{
+                        cell.accessoryType =  UITableViewCellAccessoryType.none
+                    }
+                    else{
+                        cell.accessoryType =  UITableViewCellAccessoryType.checkmark
+                    }
+                }
+            }
         }
     }
-    
+
     func ResizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
         let size = image.size
         
