@@ -198,7 +198,10 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
         
         DispatchQueue.main.async {
             cell?.imageView?.downloadedFrom(link: self.users[indexPath.row].userProfilePic!)
-            //cell.imageView?.layer.cornerRadius = (cell.imageView?.frame.size.width)! / 2.0
+            cell?.imageView?.layer.cornerRadius = (cell?.imageView?.frame.width)! / 2
+            cell?.imageView?.layer.borderWidth = 2.0
+            cell?.imageView?.layer.borderColor = UIColor.black.cgColor
+            cell?.imageView?.layer.masksToBounds = true
         }
         cell?.imageView?.contentMode = .scaleAspectFill
         cell?.imageView?.clipsToBounds = true
