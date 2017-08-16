@@ -32,6 +32,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     let userID = FIRAuth.auth()?.currentUser?.uid
     var invite = "Public"
     
+    @IBOutlet weak var inviteBtn: UIButton!
     @IBOutlet weak var tableView2: UITableView!
     @IBOutlet weak var okButton: UIBarButtonItem!
     @IBOutlet weak var showFacilityInfoButton: UIButton!
@@ -72,6 +73,8 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        inviteBtn.layer.masksToBounds = true
+        inviteBtn.layer.cornerRadius = inviteBtn.frame.width / 2
         let tap = UITapGestureRecognizer(target: self, action: #selector(ShowPinInfoViewController.selectPhoto(_:)))
         tap.numberOfTapsRequired = 1
         image.addGestureRecognizer(tap)
@@ -163,6 +166,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     
     func inviteSwitchSwitchChanged(){
         if(self.inviteSwitch.isOn == true){
+            self.inviteBtn.isHidden = false
             let alert = UIAlertController(title: "Invite Friends", message: "Will this be a PRIVATE or PUBLIC invitation?. Select a member from the table to invite.", preferredStyle: .alert)
             let publicInvite = UIAlertAction(title: "Public", style: .default) { (UIAlertAction) in
                 self.invite = "Public"
@@ -173,6 +177,8 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
             alert.addAction(publicInvite)
             alert.addAction(privateInvite)
             self.show(alert, sender: self)
+        }else{
+            self.inviteBtn.isHidden = true
         }
     }
     
@@ -358,5 +364,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
         let mapItem = MKMapItem(placemark: placemark)
         mapItem.name = self.passedPin.first?.name
         mapItem.openInMaps(launchOptions: options)
+    }
+    @IBAction func inviteBtnPressed(_ sender: Any) {
     }
 }

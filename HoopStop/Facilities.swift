@@ -27,6 +27,8 @@ class Facilities: UIViewController, MKMapViewDelegate, deleteButtonDelegate{
             }
         }
     }
+    let usersRef = FIRDatabase.database().reference().child("users")
+    let user = FIRAuth.auth()?.currentUser
     var latToRemove = 0.0
     var longToRemove = 0.0
     var pins = [FacilityPinInfo]()
@@ -37,6 +39,14 @@ class Facilities: UIViewController, MKMapViewDelegate, deleteButtonDelegate{
     var zoomChecker = false
     
     override func viewWillAppear(_ animated: Bool) {
+        if(FIRAuth.auth()?.currentUser != nil) {
+            let condition = self.usersRef.child("\(user!.uid)").child("valid")
+            condition.observe(.value, with:  { (snapshot) in
+                if snapshot.value as! String != "yes"{
+                    exit(0)
+                }
+            })
+        }
         let authorizationStatus = CLLocationManager.authorizationStatus()
         if (authorizationStatus == CLAuthorizationStatus.notDetermined) {
             self.locationManager.requestWhenInUseAuthorization()
