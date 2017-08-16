@@ -18,6 +18,7 @@ protocol deleteButtonDelegate {
 class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     var delegate: deleteButtonDelegate?
     var comments: [String]?
+    var tickedIndexPaths = [IndexPath]()
     var passedPin = [FacilityPinInfo]()
     var users = [UserInfoViewController]()
     @IBOutlet weak var inviteSwitch: UISwitch!
@@ -211,6 +212,12 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
         }
             if(!inviteSwitch.isOn){
                 cell?.accessoryType = UITableViewCellAccessoryType.none
+            }else{
+                if(self.tickedIndexPaths.contains(indexPath)){
+                    cell?.accessoryType = UITableViewCellAccessoryType.checkmark
+                }else{
+                    cell?.accessoryType = UITableViewCellAccessoryType.none
+                }
             }
         }else{
             cell = tableView.dequeueReusableCell(withIdentifier: "cellTwo", for: indexPath)
@@ -269,6 +276,19 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
                 tableView.deselectRow(at: indexPath, animated: false)
                 self.present(vc, animated: true) {}
             }else{
+                tableView.deselectRow(at: indexPath, animated: true)
+                if(!self.tickedIndexPaths.contains(indexPath)){
+                    self.tickedIndexPaths.append(indexPath)
+                }else{
+                    var x = 0
+                    for index in self.tickedIndexPaths{
+                        if index == indexPath{
+                            self.tickedIndexPaths.remove(at: x)
+                        }
+                        x = x + 1
+                    }
+                }
+                
                 if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
                     if cell.accessoryType == .checkmark{
                         cell.accessoryType =  UITableViewCellAccessoryType.none
