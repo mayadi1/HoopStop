@@ -574,7 +574,7 @@
                                 </constraints>
                             </imageView>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oGY-bz-4l1">
-                                <rect key="frame" x="20" y="342" width="374" height="328"/>
+                                <rect key="frame" x="20" y="342" width="374" height="335"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3HO-ey-zpp">
                                     <rect key="frame" x="0.0" y="72" width="374" height="44"/>
@@ -630,7 +630,7 @@
                             <constraint firstItem="34L-9M-ZVY" firstAttribute="leading" secondItem="dGA-5u-7ly" secondAttribute="leadingMargin" constant="60" id="RFj-gk-J3s"/>
                             <constraint firstItem="YFc-Vd-wn0" firstAttribute="trailing" secondItem="oGY-bz-4l1" secondAttribute="trailing" id="RUs-IN-mlk"/>
                             <constraint firstItem="34L-9M-ZVY" firstAttribute="centerY" secondItem="tEP-g2-AWD" secondAttribute="centerY" id="TCS-V1-awP"/>
-                            <constraint firstItem="tEP-g2-AWD" firstAttribute="top" secondItem="oGY-bz-4l1" secondAttribute="bottom" constant="15" id="UoD-WE-Kbc"/>
+                            <constraint firstItem="tEP-g2-AWD" firstAttribute="top" secondItem="oGY-bz-4l1" secondAttribute="bottom" constant="8" id="UoD-WE-Kbc"/>
                             <constraint firstItem="GEk-Qz-7p0" firstAttribute="leading" secondItem="YFc-Vd-wn0" secondAttribute="leading" id="Uqn-ZM-uBd"/>
                             <constraint firstItem="fyn-Ul-S8A" firstAttribute="leading" secondItem="YO7-Dg-eZx" secondAttribute="leading" id="aJb-9b-ZqC"/>
                             <constraint firstItem="oGY-bz-4l1" firstAttribute="leading" secondItem="huC-c0-rKI" secondAttribute="leading" id="aSB-VZ-F4B"/>
