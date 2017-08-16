@@ -214,6 +214,8 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
             cell = tableView.dequeueReusableCell(withIdentifier: "cellTwo", for: indexPath)
             cell!.textLabel!.text = self.comments?[indexPath.row]
         }
+        tableView.layer.cornerRadius = 10
+        tableView2.layer.cornerRadius = 10
         return cell!
     }
     
