@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		182C06F01E67CBFF007B7F97 /* ResetMyPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C06EF1E67CBFF007B7F97 /* ResetMyPasswordViewController.swift */; };
+		184CA8F51F4432230053CA16 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184CA8F41F4432220053CA16 /* StatusViewController.swift */; };
 		185887DD1E67AC8A00C9C6F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185887DC1E67AC8A00C9C6F7 /* ViewController.swift */; };
 		185887DF1E67AC9D00C9C6F7 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185887DE1E67AC9D00C9C6F7 /* LocationSearchTableViewController.swift */; };
 		1865FA141E5DA9BF009A1918 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865FA131E5DA9BF009A1918 /* SignUpViewController.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		182C06EF1E67CBFF007B7F97 /* ResetMyPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetMyPasswordViewController.swift; sourceTree = "<group>"; };
+		184CA8F41F4432220053CA16 /* StatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 		185887DC1E67AC8A00C9C6F7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		185887DE1E67AC9D00C9C6F7 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
 		1865FA131E5DA9BF009A1918 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				18A97C631E5EABA300F62427 /* submitNewFacilityViewController.swift */,
 				18A97C5F1E5E9D0900F62427 /* LoginViewController.swift */,
 				1865FA131E5DA9BF009A1918 /* SignUpViewController.swift */,
+				184CA8F41F4432220053CA16 /* StatusViewController.swift */,
 				18C59F911E5D8C96005F61D7 /* Assets.xcassets */,
 				18AF56471EAF043C00EEC8A4 /* Tutorial.storyboard */,
 				18C59F8E1E5D8C96005F61D7 /* Main.storyboard */,
@@ -295,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				185887DF1E67AC9D00C9C6F7 /* LocationSearchTableViewController.swift in Sources */,
+				184CA8F51F4432230053CA16 /* StatusViewController.swift in Sources */,
 				1867752C1E6100B200E132FB /* FacilityPinInfo.swift in Sources */,
 				18AF564C1EAF04CC00EEC8A4 /* windowView.swift in Sources */,
 				18F87BF01E77FDF300B6AAAB /* FullScreenImageViewController.swift in Sources */,
