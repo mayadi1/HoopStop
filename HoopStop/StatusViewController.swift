@@ -24,10 +24,9 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var button_tag:Int = -1
     let cellSpacingHeight: CGFloat = 5
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
         if(FIRAuth.auth()?.currentUser != nil) {
-            ref.child("users").child(userID!).observe(.value, with:  { (snapshot) in
+            ref.child("users").child((FIRAuth.auth()?.currentUser?.uid)!).observe(.value, with:  { (snapshot) in
                 let value = snapshot.value
                 let tempProfileInfoArray = value as! NSDictionary
                 self.invitedAt = (tempProfileInfoArray["invitedAt"] as? [String])!
@@ -37,6 +36,10 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 })
             })
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         tableView.layer.frame.size.height = self.view.frame.height
         tableView.frame.origin.y += 0
         tableView.register(UINib(nibName: "StackViewCell", bundle: nil), forCellReuseIdentifier: "StackViewCell")

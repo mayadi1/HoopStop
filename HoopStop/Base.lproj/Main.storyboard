@@ -310,15 +310,25 @@
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7qe-Qi-nt8">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7qe-Qi-nt8">
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="ekN-ek-PaG" id="OOy-Ic-TDK"/>
                                     <outlet property="delegate" destination="ekN-ek-PaG" id="Yz0-T1-TGD"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FkS-OZ-mvM">
+                                <rect key="frame" x="307" y="546" width="68" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="23q-S8-Ye1"/>
+                                    <constraint firstAttribute="width" constant="68" id="XCw-pi-JfT"/>
+                                </constraints>
+                                <state key="normal" image="search"/>
+                                <connections>
+                                    <action selector="searchButoonPressed:" destination="ekN-ek-PaG" eventType="touchUpInside" id="agI-bO-MC1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -326,8 +336,14 @@
                             <constraint firstItem="yaw-Et-XEs" firstAttribute="leading" secondItem="aPt-Y1-WwM" secondAttribute="leadingMargin" id="AGK-dw-laf"/>
                             <constraint firstItem="yaw-Et-XEs" firstAttribute="top" secondItem="wBX-0v-44x" secondAttribute="bottom" constant="10" id="GPM-G7-XdL"/>
                             <constraint firstItem="9v3-yI-KfO" firstAttribute="leading" secondItem="aPt-Y1-WwM" secondAttribute="leading" id="MFq-Ak-ivL"/>
+                            <constraint firstAttribute="trailing" secondItem="FkS-OZ-mvM" secondAttribute="trailing" id="NVo-Rt-q8m"/>
+                            <constraint firstItem="QIs-Mh-4H5" firstAttribute="top" secondItem="7qe-Qi-nt8" secondAttribute="bottom" id="TMZ-PD-EJd"/>
+                            <constraint firstAttribute="trailing" secondItem="7qe-Qi-nt8" secondAttribute="trailing" id="Vq5-Lq-vAe"/>
                             <constraint firstItem="QIs-Mh-4H5" firstAttribute="top" secondItem="9v3-yI-KfO" secondAttribute="bottom" id="a9s-XZ-e0H"/>
+                            <constraint firstItem="7qe-Qi-nt8" firstAttribute="leading" secondItem="aPt-Y1-WwM" secondAttribute="leading" id="b0n-At-SLn"/>
                             <constraint firstAttribute="trailing" secondItem="9v3-yI-KfO" secondAttribute="trailing" id="fqE-vQ-V4j"/>
+                            <constraint firstItem="QIs-Mh-4H5" firstAttribute="top" secondItem="FkS-OZ-mvM" secondAttribute="bottom" id="iGb-wX-sGv"/>
+                            <constraint firstItem="7qe-Qi-nt8" firstAttribute="top" secondItem="wBX-0v-44x" secondAttribute="bottom" id="lVk-e3-dau"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Facilities" image="hoops" selectedImage="hoops" id="fuC-SG-sGE"/>
@@ -1487,6 +1503,7 @@
         <image name="facebookInviteIcon" width="100" height="100"/>
         <image name="hoops" width="25" height="25"/>
         <image name="profile" width="25" height="25"/>
+        <image name="search" width="60" height="60"/>
         <image name="twitterInviteIcon" width="100" height="100"/>
     </resources>
 </document>
