@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "facilityE@2x-2.png",
+      "filename" : "search.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "facilityE@2x-3.png",
+      "filename" : "search@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "facilityE@2x-4.png",
+      "filename" : "search@3x.png",
       "scale" : "3x"
     }
   ],
