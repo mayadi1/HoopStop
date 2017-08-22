@@ -40,7 +40,7 @@ class Facilities: UIViewController, MKMapViewDelegate, deleteButtonDelegate{
     
     override func viewWillAppear(_ animated: Bool) {
         if(FIRAuth.auth()?.currentUser != nil) {
-            let condition = self.usersRef.child("\(user!.uid)").child("valid")
+            let condition = self.usersRef.child((FIRAuth.auth()?.currentUser?.uid)!).child("valid")
             condition.observe(.value, with:  { (snapshot) in
                 if snapshot.value as! String != "yes"{
                     exit(0)
@@ -53,6 +53,7 @@ class Facilities: UIViewController, MKMapViewDelegate, deleteButtonDelegate{
             self.zoomChecker = false
             print("false")
         } else {
+            self.zoomToUserLocation()
             self.zoomChecker = true
             print("true")
             self.retriveInfo()
@@ -181,7 +182,7 @@ class Facilities: UIViewController, MKMapViewDelegate, deleteButtonDelegate{
     }
     
     func zoomToUserLocation(){
-        self.mapView.setRegion(MKCoordinateRegionMake((self.locationManager.location?.coordinate)!, MKCoordinateSpanMake(0.1, 0.1)), animated: false)
+        self.mapView.setRegion(MKCoordinateRegionMake((self.locationManager.location?.coordinate)!, MKCoordinateSpanMake(0.2, 0.2)), animated: false)
         self.zoomChecker = false
     }
     

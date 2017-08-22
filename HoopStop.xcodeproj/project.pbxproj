@@ -200,7 +200,7 @@
 				TargetAttributes = {
 					18C59F861E5D8C96005F61D7 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 6KKRC5GQMV;
+						DevelopmentTeam = VJ6GVTZBG9;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -448,13 +448,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HoopStop/HoopStop.entitlements;
-				DEVELOPMENT_TEAM = 6KKRC5GQMV;
+				DEVELOPMENT_TEAM = VJ6GVTZBG9;
 				INFOPLIST_FILE = HoopStop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ayadios.HoopStop2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HoopStop.HoopStop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -464,13 +465,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HoopStop/HoopStop.entitlements;
-				DEVELOPMENT_TEAM = 6KKRC5GQMV;
+				DEVELOPMENT_TEAM = VJ6GVTZBG9;
 				INFOPLIST_FILE = HoopStop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ayadios.HoopStop2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HoopStop.HoopStop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

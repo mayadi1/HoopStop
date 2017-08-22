@@ -26,16 +26,17 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref.child("users").child(userID!).observe(.value, with:  { (snapshot) in
-            let value = snapshot.value
-            let tempProfileInfoArray = value as! NSDictionary
-            self.invitedAt = (tempProfileInfoArray["invitedAt"] as? [String])!
-            self.signedInAtLabel.text = (tempProfileInfoArray["signedInAt"] as? String)!
-            DispatchQueue.main.async(execute: {
-                self.tableView.reloadData()
+        if(FIRAuth.auth()?.currentUser != nil) {
+            ref.child("users").child(userID!).observe(.value, with:  { (snapshot) in
+                let value = snapshot.value
+                let tempProfileInfoArray = value as! NSDictionary
+                self.invitedAt = (tempProfileInfoArray["invitedAt"] as? [String])!
+                self.signedInAtLabel.text = (tempProfileInfoArray["signedInAt"] as? String)!
+                DispatchQueue.main.async(execute: {
+                    self.tableView.reloadData()
+                })
             })
-        })
-        
+        }
         tableView.layer.frame.size.height = self.view.frame.height
         tableView.frame.origin.y += 0
         tableView.register(UINib(nibName: "StackViewCell", bundle: nil), forCellReuseIdentifier: "StackViewCell")
