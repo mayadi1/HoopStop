@@ -11,7 +11,15 @@ import MapKit
 import Firebase
 import FirebaseAuth
 
-class Facilities: UIViewController, MKMapViewDelegate, deleteButtonDelegate{
+class Facilities: UIViewController, MKMapViewDelegate, deleteButtonDelegate, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating{
+    var pins = [FacilityPinInfo]()
+
+    var filteredcourts = [FacilityPinInfo]()
+
+    let searchController = UISearchController(searchResultsController: nil)
+
+    
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var chooseACourtLabel: UILabel!
     internal func deleteButtonTap(name: String){
         for pin in self.pins{
@@ -31,7 +39,6 @@ class Facilities: UIViewController, MKMapViewDelegate, deleteButtonDelegate{
     let user = FIRAuth.auth()?.currentUser
     var latToRemove = 0.0
     var longToRemove = 0.0
-    var pins = [FacilityPinInfo]()
     @IBOutlet weak var mapView: MKMapView!
     let ref = FIRDatabase.database().reference()
     let locationManager = CLLocationManager()
@@ -64,14 +71,47 @@ class Facilities: UIViewController, MKMapViewDelegate, deleteButtonDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        filteredcourts = self.pins
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.newFacilityImage = self.ResizeImage(image: UIImage(named: "facilityImage")!,targetSize: CGSize(width: 60, height: 80.0))
         mapView.showsUserLocation = true
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func updateSearchResults(for searchController: UISearchController) {
+        // If we haven't typed anything into the search bar then do not filter the results
+        if searchController.searchBar.text! == "" {
+            filteredcourts = self.pins
+        } else {
+            // Filter the results
+            filteredcourts = self.pins.filter { ($0.name?.lowercased().contains(searchController.searchBar.text!.lowercased()))! }
+        }
+        
+        self.tableView.reloadData()
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.filteredcourts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell 	{
+        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
+        
+        cell.textLabel?.text = self.filteredcourts[indexPath.row].name
+        cell.detailTextLabel?.text = self.filteredcourts[indexPath.row].additionalFacilityInfo
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Row \(indexPath.row) selected")
+    }
+
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         if self.zoomChecker == true{
@@ -89,6 +129,8 @@ class Facilities: UIViewController, MKMapViewDelegate, deleteButtonDelegate{
                 if (n?["facilityPhoto"]  != nil){
                     let tempInfo = FacilityPinInfo(passedAddedDate: (n?["addedDate"] as? Double)!, passedAdditionalFacilityInfo: (n?["additionalFacilityInfo"] as? String)!, passedCity: (n?["city"] as? String)!, passedFacilityPhoto: (n?["facilityPhoto"] as? String)!, passedLat: (n?["lat"] as? Double)!, passedLong: (n?["long"] as? Double)!, passedName: (n?["name"] as? String)!, passedState: (n?["state"] as? String)!, passedStreetAddress: (n?["streetAddress"] as? String)!, passedUserIDPostingThis: (n?["userIDPostingThis"] as? String)!, passedZip: (n?["zip"] as? String)!, passedFacilityUid: (n?["facilityUid"] as? String)!)
                     self.pins.append(tempInfo)
+                    self.filteredcourts = self.pins
+                    self.tableView.reloadData()
                     self.addMapNotation(tempFacility: tempInfo)
                 }
             }
