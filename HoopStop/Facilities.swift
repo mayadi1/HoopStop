@@ -110,9 +110,17 @@ class Facilities: UIViewController, MKMapViewDelegate, deleteButtonDelegate, UIT
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Row \(indexPath.row) selected")
+        
+        let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(self.filteredcourts[indexPath.row].lat!, self.filteredcourts[indexPath.row].long!)
+        self.tableView.isHidden = true
+        self.mapView.setRegion(MKCoordinateRegionMake(location, MKCoordinateSpanMake(0.1, 0.1)), animated: true)
+        for annotation in self.mapView.annotations{
+            if (annotation.coordinate.latitude == self.filteredcourts[indexPath.row].lat! && annotation.coordinate.longitude ==  self.filteredcourts[indexPath.row].long! ){
+                self.mapView.selectAnnotation(annotation, animated: false)
+            }
+        }
     }
 
-    
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         if self.zoomChecker == true{
             self.zoomToUserLocation()
