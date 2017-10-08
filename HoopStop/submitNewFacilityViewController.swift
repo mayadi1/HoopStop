@@ -89,7 +89,7 @@ class submitNewFacilityViewController: UIViewController,UITextViewDelegate,UITex
         self.okButton.isEnabled = false
         getLatLong()
         SVProgressHUD.show(withStatus: "Loading")
-        let rootRef = FIRDatabase.database().reference()
+        let rootRef = FIRDatabase.database().reference().childByAutoId()
         let autoChild = rootRef.childByAutoId().key
         self.autoChilSigned = autoChild
         rootRef.child("facilities").child(self.zip.text!).child("\(autoChild)").child("name").setValue(self.facilityName.text)
