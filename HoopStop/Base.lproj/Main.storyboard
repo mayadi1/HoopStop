@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1611" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kp8-LZ-MWR">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="17A365" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kp8-LZ-MWR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -25,10 +25,10 @@
                                 <rect key="frame" x="20" y="40" width="335" height="578"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1mo-yG-4Yf">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="96"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="96.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75i-Ig-ND8">
-                                                <rect key="frame" x="0.0" y="0.0" width="168" height="96"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="96.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <state key="normal" title="Sign Up">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -38,7 +38,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkk-Nq-ufd">
-                                                <rect key="frame" x="168" y="0.0" width="167" height="96"/>
+                                                <rect key="frame" x="111.5" y="0.0" width="112" height="96.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <state key="normal" title="Login">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -48,7 +48,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s51-sK-e8y">
-                                                <rect key="frame" x="335" y="0.0" width="0.0" height="96"/>
+                                                <rect key="frame" x="223.5" y="0.0" width="111.5" height="96.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <state key="normal" title="Edit Profile">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -61,7 +61,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XX7-PE-iVU">
-                                        <rect key="frame" x="0.0" y="96" width="173" height="97"/>
+                                        <rect key="frame" x="0.0" y="96.5" width="173" height="96"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Submit new court">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -71,7 +71,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91o-pA-1Cj">
-                                        <rect key="frame" x="0.0" y="193" width="100" height="96"/>
+                                        <rect key="frame" x="0.0" y="192.5" width="100" height="96.5"/>
                                         <state key="normal" image="emailInviteIcon">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -80,7 +80,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tk-s4-Uu8">
-                                        <rect key="frame" x="0.0" y="289" width="100" height="96"/>
+                                        <rect key="frame" x="0.0" y="289" width="100" height="96.5"/>
                                         <state key="normal" image="facebookInviteIcon">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -89,7 +89,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vxy-vK-IBb">
-                                        <rect key="frame" x="0.0" y="385" width="100" height="97"/>
+                                        <rect key="frame" x="0.0" y="385.5" width="100" height="96"/>
                                         <state key="normal" image="twitterInviteIcon">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -98,7 +98,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WaD-2E-ixy">
-                                        <rect key="frame" x="0.0" y="482" width="100" height="96"/>
+                                        <rect key="frame" x="0.0" y="481.5" width="100" height="96.5"/>
                                         <state key="normal" image="aboutInviteIcon">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -115,7 +115,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Member Services" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xaq-3X-BOn">
-                                <rect key="frame" x="0.0" y="20" width="375" height="27"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="26.5"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -988,17 +988,17 @@
                                 </items>
                             </navigationBar>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dLr-vY-ede">
-                                <rect key="frame" x="88" y="437" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="437" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="0dT-RS-et0"/>
                                     <constraint firstAttribute="height" constant="200" id="iKW-C1-j0X"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qBx-TT-UWb">
-                                <rect key="frame" x="0.0" y="55" width="375" height="240"/>
+                                <rect key="frame" x="0.0" y="55" width="375" height="250"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6AB-XN-0US">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -1007,7 +1007,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="958-Ri-OTv">
-                                        <rect key="frame" x="0.0" y="60" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="50"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -1016,7 +1016,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bo7-89-ByG">
-                                        <rect key="frame" x="0.0" y="120" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="100" width="375" height="50"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
@@ -1024,8 +1024,14 @@
                                             <outlet property="delegate" destination="Een-iu-rLx" id="5VL-0D-fBR"/>
                                         </connections>
                                     </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Profile info" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="biD-4U-N47">
+                                        <rect key="frame" x="0.0" y="150" width="375" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wC3-9T-7uu">
-                                        <rect key="frame" x="0.0" y="180" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="200" width="375" height="50"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
@@ -1035,7 +1041,7 @@
                                     </textField>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="KsH-95-3U7"/>
+                                    <constraint firstAttribute="height" constant="250" id="KsH-95-3U7"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -1059,6 +1065,7 @@
                         <outlet property="email" destination="Bo7-89-ByG" id="JgV-eQ-rGS"/>
                         <outlet property="name" destination="6AB-XN-0US" id="tub-br-Z2G"/>
                         <outlet property="password" destination="wC3-9T-7uu" id="9y8-rY-DVO"/>
+                        <outlet property="profileDescription" destination="biD-4U-N47" id="HRz-EE-0tE"/>
                         <outlet property="profileImage" destination="dLr-vY-ede" id="crJ-o7-5vD"/>
                         <outlet property="updateButton" destination="V2f-cI-JXe" id="fMV-6y-hwr"/>
                         <outlet property="username" destination="958-Ri-OTv" id="AXo-Ri-H0v"/>
@@ -1111,10 +1118,10 @@
                                 <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yGK-ao-g54">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="309"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="308.5"/>
                                     </imageView>
                                     <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="j7e-JK-YCa">
-                                        <rect key="frame" x="0.0" y="309" width="375" height="308"/>
+                                        <rect key="frame" x="0.0" y="308.5" width="375" height="308.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1170,7 +1177,7 @@
                                 <rect key="frame" x="16" y="627" width="343" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gt-QV-ahS">
-                                        <rect key="frame" x="0.0" y="0.0" width="172" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="171.5" height="40"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="0.15644230770000001" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Ok">
@@ -1181,7 +1188,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0g-rT-LFb">
-                                        <rect key="frame" x="172" y="0.0" width="171" height="40"/>
+                                        <rect key="frame" x="171.5" y="0.0" width="171.5" height="40"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="0.17070913460000001" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Cancel">

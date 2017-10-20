@@ -13,6 +13,7 @@ import SVProgressHUD
 
 class EditProfileViewController: UIViewController, UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
+    @IBOutlet weak var profileDescription: UITextView!
     @IBOutlet weak var updateButton: UIBarButtonItem!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var password: UITextField!
@@ -44,9 +45,10 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate,UIImagePi
             let value = snapshot.value
             let tempProfileInfoArray = value as! NSDictionary
             self.name.text = tempProfileInfoArray["name"] as? String
-            self.username.text = tempProfileInfoArray["username"] as? String
-            self.email.text = tempProfileInfoArray["useremail"] as? String
-            self.password.text = "******"
+             self.username.text = tempProfileInfoArray["username"] as? String
+             self.email.text = tempProfileInfoArray["useremail"] as? String
+             self.profileDescription.text = tempProfileInfoArray["additionalProfileInfo"] as? String
+             self.password.text = "******"
             if((tempProfileInfoArray["userProfilePic"] as? String)! == "NoPhoto"){
                 self.profileImage.image = UIImage(named: "profile-1")
             }else{
