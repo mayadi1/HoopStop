@@ -200,6 +200,7 @@
 				TargetAttributes = {
 					18C59F861E5D8C96005F61D7 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = VJ6GVTZBG9;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -449,7 +450,7 @@
 				CODE_SIGN_ENTITLEMENTS = HoopStop/HoopStop.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = VJ6GVTZBG9;
 				INFOPLIST_FILE = HoopStop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -469,7 +470,7 @@
 				CODE_SIGN_ENTITLEMENTS = HoopStop/HoopStop.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = VJ6GVTZBG9;
 				INFOPLIST_FILE = HoopStop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

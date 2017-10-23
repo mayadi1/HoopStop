@@ -84,6 +84,8 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate,UIImagePi
         let user = FIRAuth.auth()?.currentUser
         rootRef.child("users").child("\(user!.uid)").child("name").setValue(self.name.text)
         rootRef.child("users").child("\(user!.uid)").child("username").setValue(self.username.text)
+        rootRef.child("users").child("\(user!.uid)").child("additionalProfileInfo").setValue(self.profileDescription.text)
+
         let changeRequest = user?.profileChangeRequest()
         changeRequest?.displayName = self.name.text
         changeRequest?.commitChanges(completion: { (error) in

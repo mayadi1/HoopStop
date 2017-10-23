@@ -232,8 +232,10 @@ class Facilities: UIViewController, MKMapViewDelegate, deleteButtonDelegate, UIT
     }
     
     func zoomToUserLocation(){
+        if (self.locationManager.location != nil){
         self.mapView.setRegion(MKCoordinateRegionMake((self.locationManager.location?.coordinate)!, MKCoordinateSpanMake(0.2, 0.2)), animated: false)
         self.zoomChecker = false
+        }
     }
     @IBAction func searchButoonPressed(_ sender: Any) {
         if(self.tableView.isHidden){
