@@ -116,7 +116,10 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if sender.tag != previousCellTag {
             button_tag = sender.tag
             
-            lastCell = tableView.cellForRow(at: IndexPath(row: button_tag, section: 0)) as! StackViewCell
+            let cellIndexPath = IndexPath(row: button_tag, section: 0)
+
+            
+            lastCell = tableView.cellForRow(at: cellIndexPath) as! StackViewCell
             self.lastCell.animate(duration: 0.2, c: {
                 self.view.layoutIfNeeded()
             })

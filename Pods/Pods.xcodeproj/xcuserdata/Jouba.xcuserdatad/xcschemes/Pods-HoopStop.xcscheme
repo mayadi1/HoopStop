@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A2E9A64DB5CE3501A32DD0F7CE0E37D1"
+               BlueprintIdentifier = "5D84CA535C6CF0468226E65FAEAA24FB"
                BuildableName = "Pods_HoopStop.framework"
                BlueprintName = "Pods-HoopStop"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -26,6 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -36,6 +37,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -45,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A2E9A64DB5CE3501A32DD0F7CE0E37D1"
+            BlueprintIdentifier = "5D84CA535C6CF0468226E65FAEAA24FB"
             BuildableName = "Pods_HoopStop.framework"
             BlueprintName = "Pods-HoopStop"
             ReferencedContainer = "container:Pods.xcodeproj">

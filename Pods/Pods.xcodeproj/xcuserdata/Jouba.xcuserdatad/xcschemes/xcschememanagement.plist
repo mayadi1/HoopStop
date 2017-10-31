@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>DateTimePicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GTMSessionFetcher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -36,37 +41,6 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>1CD13ABDFB64C3880F00F99073F2A48D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>361C914873778934BD329014081CB540</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6D5CEDECD3D8DC52EA507E0431BDA8A0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A2E9A64DB5CE3501A32DD0F7CE0E37D1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EC1544AEF79DB4BD1B3788D2F032D288</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

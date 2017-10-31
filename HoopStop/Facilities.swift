@@ -172,8 +172,16 @@ class Facilities: UIViewController, MKMapViewDelegate, deleteButtonDelegate, UIT
                 DispatchQueue.global().async {
                     let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                     DispatchQueue.main.async {
-                        let image = self.ResizeImage(image:  UIImage(data: data!)!,targetSize: CGSize(width: 60, height: 80.0))
-                        anView?.leftCalloutAccessoryView = UIImageView.init(image: image)
+                        if (data != nil)
+                        {
+                            let image = self.ResizeImage(image:  UIImage(data: data!)!,targetSize: CGSize(width: 60, height: 80.0))
+                            anView?.leftCalloutAccessoryView = UIImageView.init(image: image)
+                        }
+                        else
+                        {
+                            print("Could not get the image")
+                        }
+                        
                     }
                 }
             }else{
