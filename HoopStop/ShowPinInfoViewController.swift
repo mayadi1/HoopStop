@@ -398,7 +398,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
                 
                 
                 
-                self.users[index.row].invitedAt.append(self.navItem.title! + " /*/At: \(date)")
+                self.users[index.row].invitedAt.append(self.navItem.title! + " At: \(date)")
                 self.usersFef.child(self.users[index.row].userUid!).child("invitedAt").setValue(self.users[index.row].invitedAt)
                 SVProgressHUD.showSuccess(withStatus: "Invite sent to " + "\(self.tickedIndexPaths.count)")
                 self.tableView.reloadData()

@@ -30,7 +30,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let value = snapshot.value
                 let tempProfileInfoArray = value as! NSDictionary
                 
-                if ((tempProfileInfoArray["invitedAt"] as? [String])! .count != 0)
+                if ((tempProfileInfoArray["invitedAt"] as? [String])! .count != 1)
                 {
                     self.invitedAt = (tempProfileInfoArray["invitedAt"] as? [String])!
 
