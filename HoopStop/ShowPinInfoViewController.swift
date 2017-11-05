@@ -143,6 +143,12 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
         delegate?.deleteButtonTap(name: self.passedPin[0].facilityUid!)
     }
     func signInOutSwitchSwitchChanged(){
+        if (userID == nil)
+        {
+            print("Unkown user cant invite")
+            SVProgressHUD.showError(withStatus: "You need to sing up first")
+            return
+        }
         if(self.signInOutSwitch.isOn == true){
             self.signInLabel.text = "You are now here"
             let date = Date()
