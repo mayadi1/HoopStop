@@ -33,8 +33,13 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 if ((tempProfileInfoArray["invitedAt"] as? [String])! .count != 1)
                 {
                     self.invitedAt = (tempProfileInfoArray["invitedAt"] as? [String])!
-
+                   
+                    if (self.invitedAt.first == "0")
+                    {
+                        self.invitedAt.remove(at: 0)
+                    }
                 }
+                
                 
                 self.signedInAtLabel.text = (tempProfileInfoArray["signedInAt"] as? String)!
                 DispatchQueue.main.async(execute: {
