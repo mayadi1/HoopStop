@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import Firebase
+import DateTimePicker
 
 class InviteDisinviteViewController: UIViewController {
     var passedUser = [UserInfoViewController]()
@@ -49,11 +50,7 @@ class InviteDisinviteViewController: UIViewController {
                 }
             }
             if(self.found == false){
-                self.passedUser[0].invitedAt.append(self.passedName!)
-                usersFef.child(self.passedUser[0].userUid!).child("invitedAt").setValue(self.passedUser[0].invitedAt)
-                SVProgressHUD.showSuccess(withStatus: "Invite sent.")
-                self.dismiss(animated: false) {
-                }
+                self.pickDateTime()
             }
 
         }else{
@@ -67,4 +64,42 @@ class InviteDisinviteViewController: UIViewController {
         self.dismiss(animated: false) { 
         }
     }
+    
+    func pickDateTime()
+    {
+        let min = Date()
+        let max = Date().addingTimeInterval(60 * 60 * 24 * 4)
+        let picker = DateTimePicker.show(selected: Date(), minimumDate: min, maximumDate: max)
+        picker.highlightColor = UIColor(red: 255.0/255.0, green: 138.0/255.0, blue: 138.0/255.0, alpha: 1)
+        picker.darkColor = UIColor.blue
+        picker.doneButtonTitle = "!! DONE DONE !!"
+        picker.todayButtonTitle = "Today"
+        picker.is12HourFormat = true
+        picker.dateFormat = "hh:mm aa dd/MM/YYYY"
+        //        picker.isTimePickerOnly = true
+        picker.completionHandler = { date in
+            let formatter = DateFormatter()
+            formatter.dateFormat = "hh:mm aa dd/MM/YYYY"
+            // self.title = formatter.string(from: date)
+            
+            //Set date to pass
+            let calendar = Calendar.current
+            let hour = String(calendar.component(.hour, from: date))
+            let min = String(calendar.component(.minute, from: date))
+            let year = String(calendar.component(.year, from: date))
+            let month = String(calendar.component(.month, from: date))
+            let day = String(calendar.component(.day, from: date))
+            let dateToPass = hour + ":" + min + " "
+            let fullDateToPass = dateToPass + day + "/" + month + "/" + year
+            
+
+            
+            self.passedUser[0].invitedAt.append(self.passedName! + " At: \(fullDateToPass)")
+            self.usersFef.child(self.passedUser[0].userUid!).child("invitedAt").setValue(self.passedUser[0].invitedAt)
+            SVProgressHUD.showSuccess(withStatus: "Invite sent.")
+            self.dismiss(animated: false) {
+            }
+        }
+    }
+
 }
