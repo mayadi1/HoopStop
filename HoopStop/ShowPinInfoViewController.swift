@@ -147,6 +147,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
         {
             print("Unkown user cant invite")
             SVProgressHUD.showError(withStatus: "You need to sing up first")
+            signInOutSwitch.isOn = false
             return
         }
         if(self.signInOutSwitch.isOn == true){
