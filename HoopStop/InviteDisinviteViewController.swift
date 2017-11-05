@@ -45,6 +45,13 @@ class InviteDisinviteViewController: UIViewController {
             for facility in self.passedUser[0].invitedAt{
                 if (facility == self.passedName){
                     self.found = true
+                    if (userID == nil)
+                    {
+                        print("Unkown user cant invite")
+                        SVProgressHUD.showError(withStatus: "You need to sing up first")
+                        return
+                    }
+                    
                     SVProgressHUD.showSuccess(withStatus: "Already invited.")
                     self.dismiss(animated: false) {
                     }
@@ -75,6 +82,7 @@ class InviteDisinviteViewController: UIViewController {
             SVProgressHUD.showError(withStatus: "You need to sing up first")
             return
         }
+        
         let min = Date()
         let max = Date().addingTimeInterval(60 * 60 * 24 * 4)
         let picker = DateTimePicker.show(selected: Date(), minimumDate: min, maximumDate: max)
