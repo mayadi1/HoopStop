@@ -47,29 +47,33 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
             
            self.tableView2.reloadData()
         })
-        self.usersFef.child(userID!).child("signedInAt").observe(.value, with: { (snapshot) in
-           let string = snapshot.value as! String
-            if string.range(of: self.navItem.title!) != nil{
-                self.signInOutSwitch.isOn = true
-                self.signInLabel.text = "You are now here"
-                for user in self.users{
-                    if (user.userUid == self.userID){
-                        let date = Date()
-                        let calendar = Calendar.current
-                        let hour = String(calendar.component(.hour, from: date))
-                        let min = String(calendar.component(.minute, from: date))
-                        let year = String(calendar.component(.year, from: date))
-                        let month = String(calendar.component(.month, from: date))
-                        let day = String(calendar.component(.day, from: date))
-                        let dateToPass = hour + ":" + min + " "
-                        let fullDateToPass = dateToPass + day + "/" + month + "/" + year
-                        let stringToPassIn = self.navItem.title! + " At: " + fullDateToPass
-                        user.signedInAt = stringToPassIn
-                        self.tableView.reloadData()
+        
+        if (self.userID != nil)
+        {
+            self.usersFef.child(userID!).child("signedInAt").observe(.value, with: { (snapshot) in
+            let string = snapshot.value as! String
+                if string.range(of: self.navItem.title!) != nil{
+                    self.signInOutSwitch.isOn = true
+                    self.signInLabel.text = "You are now here"
+                    for user in self.users{
+                        if (user.userUid == self.userID){
+                            let date = Date()
+                            let calendar = Calendar.current
+                            let hour = String(calendar.component(.hour, from: date))
+                            let min = String(calendar.component(.minute, from: date))
+                            let year = String(calendar.component(.year, from: date))
+                            let month = String(calendar.component(.month, from: date))
+                            let day = String(calendar.component(.day, from: date))
+                            let dateToPass = hour + ":" + min + " "
+                            let fullDateToPass = dateToPass + day + "/" + month + "/" + year
+                            let stringToPassIn = self.navItem.title! + " At: " + fullDateToPass
+                            user.signedInAt = stringToPassIn
+                            self.tableView.reloadData()
+                        }
                     }
                 }
-            }
-        })
+            })
+        }
     }
     
     override func viewDidLoad() {
@@ -376,6 +380,12 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     
     func pickDateTime()
     {
+        if (userID == nil)
+        {
+            print("Unkown user cant invite")
+            SVProgressHUD.showError(withStatus: "You need to sing up first")
+            return
+        }
         let min = Date()
         let max = Date().addingTimeInterval(60 * 60 * 24 * 4)
         let picker = DateTimePicker.show(selected: Date(), minimumDate: min, maximumDate: max)

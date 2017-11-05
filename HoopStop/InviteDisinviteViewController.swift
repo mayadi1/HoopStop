@@ -16,6 +16,8 @@ class InviteDisinviteViewController: UIViewController {
     var passedImage: UIImage?
     var passedInviteType: String?
     var passedName: String?
+    let userID = FIRAuth.auth()?.currentUser?.uid
+
     @IBOutlet weak var inviteButton: UIBarButtonItem!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
@@ -67,6 +69,12 @@ class InviteDisinviteViewController: UIViewController {
     
     func pickDateTime()
     {
+        if (userID == nil)
+        {
+            print("Unkown user cant invite")
+            SVProgressHUD.showError(withStatus: "You need to sing up first")
+            return
+        }
         let min = Date()
         let max = Date().addingTimeInterval(60 * 60 * 24 * 4)
         let picker = DateTimePicker.show(selected: Date(), minimumDate: min, maximumDate: max)
