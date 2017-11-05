@@ -396,9 +396,16 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
             for index in self.tickedIndexPaths{
                 print(self.users[index.row].name!)
                 
+                let calendar = Calendar.current
+                let hour = String(calendar.component(.hour, from: date))
+                let min = String(calendar.component(.minute, from: date))
+                let year = String(calendar.component(.year, from: date))
+                let month = String(calendar.component(.month, from: date))
+                let day = String(calendar.component(.day, from: date))
+                let dateToPass = hour + ":" + min + ". "
+                let fullDateToPass = dateToPass + day + "/" + month + "/" + year
                 
-                
-                self.users[index.row].invitedAt.append(self.navItem.title! + " At: \(date)")
+                self.users[index.row].invitedAt.append(self.navItem.title! + " At: \(fullDateToPass)")
                 self.usersFef.child(self.users[index.row].userUid!).child("invitedAt").setValue(self.users[index.row].invitedAt)
                 SVProgressHUD.showSuccess(withStatus: "Invite sent to " + "\(self.tickedIndexPaths.count)")
                 self.tableView.reloadData()
