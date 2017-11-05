@@ -145,7 +145,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     func signInOutSwitchSwitchChanged(){
         if (userID == nil)
         {
-            print("Unkown user cant invite")
+            print("Unkown user cant sign in")
             SVProgressHUD.showError(withStatus: "You need to sing up first")
             signInOutSwitch.isOn = false
             return
