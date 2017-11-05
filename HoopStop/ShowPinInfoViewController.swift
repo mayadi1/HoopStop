@@ -63,7 +63,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
                         let day = String(calendar.component(.day, from: date))
                         let dateToPass = hour + ":" + min + ". "
                         let fullDateToPass = dateToPass + day + "/" + month + "/" + year
-                        let stringToPassIn = self.navItem.title! + " @" + fullDateToPass
+                        let stringToPassIn = self.navItem.title! + " At: " + fullDateToPass
                         user.signedInAt = stringToPassIn
                         self.tableView.reloadData()
                     }
