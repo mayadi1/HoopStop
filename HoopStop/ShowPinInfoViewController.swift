@@ -376,11 +376,11 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
     
     func pickDateTime()
     {
-        let min = Date().addingTimeInterval(-60 * 60 * 24 * 4)
+        let min = Date()
         let max = Date().addingTimeInterval(60 * 60 * 24 * 4)
         let picker = DateTimePicker.show(selected: Date(), minimumDate: min, maximumDate: max)
         picker.highlightColor = UIColor(red: 255.0/255.0, green: 138.0/255.0, blue: 138.0/255.0, alpha: 1)
-        picker.darkColor = UIColor.darkGray
+        picker.darkColor = UIColor.blue
         picker.doneButtonTitle = "!! DONE DONE !!"
         picker.todayButtonTitle = "Today"
         picker.is12HourFormat = true
@@ -391,10 +391,15 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
             formatter.dateFormat = "hh:mm aa dd/MM/YYYY"
            // self.title = formatter.string(from: date)
             
+            
+            
             for index in self.tickedIndexPaths{
                 print(self.users[index.row].name!)
-                self.users[index.row].invitedAt.append(self.navItem.title!)
-                self.usersFef.child(users[index.row].userUid!).child("invitedAt").setValue(users[index.row].invitedAt)
+                
+                
+                
+                self.users[index.row].invitedAt.append(self.navItem.title! + " /*/At: \(date)")
+                self.usersFef.child(self.users[index.row].userUid!).child("invitedAt").setValue(self.users[index.row].invitedAt)
                 SVProgressHUD.showSuccess(withStatus: "Invite sent to " + "\(self.tickedIndexPaths.count)")
                 self.tableView.reloadData()
             }

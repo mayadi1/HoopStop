@@ -29,7 +29,13 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             ref.child("users").child((FIRAuth.auth()?.currentUser?.uid)!).observe(.value, with:  { (snapshot) in
                 let value = snapshot.value
                 let tempProfileInfoArray = value as! NSDictionary
-                self.invitedAt = (tempProfileInfoArray["invitedAt"] as? [String])!
+                
+                if ((tempProfileInfoArray["invitedAt"] as? [String])! .count != 0)
+                {
+                    self.invitedAt = (tempProfileInfoArray["invitedAt"] as? [String])!
+
+                }
+                
                 self.signedInAtLabel.text = (tempProfileInfoArray["signedInAt"] as? String)!
                 DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()
