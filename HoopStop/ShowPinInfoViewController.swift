@@ -61,7 +61,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
                         let year = String(calendar.component(.year, from: date))
                         let month = String(calendar.component(.month, from: date))
                         let day = String(calendar.component(.day, from: date))
-                        let dateToPass = hour + ":" + min + ". "
+                        let dateToPass = hour + ":" + min + " "
                         let fullDateToPass = dateToPass + day + "/" + month + "/" + year
                         let stringToPassIn = self.navItem.title! + " At: " + fullDateToPass
                         user.signedInAt = stringToPassIn
@@ -149,7 +149,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
             let month = String(calendar.component(.month, from: date))
             let day = String(calendar.component(.day, from: date))
             
-            let dateToPass = hour + ":" + min + ". "
+            let dateToPass = hour + ":" + min + " "
             let fullDateToPass = dateToPass + day + "/" + month + "/" + year
             let stringToPassIn = self.passedPin[0].name! + " @" + fullDateToPass
             usersFef.child((FIRAuth.auth()?.currentUser?.uid)!).child("signedInAt").setValue(stringToPassIn)
@@ -402,7 +402,7 @@ class ShowPinInfoViewController: UIViewController, UITableViewDelegate,UITableVi
                 let year = String(calendar.component(.year, from: date))
                 let month = String(calendar.component(.month, from: date))
                 let day = String(calendar.component(.day, from: date))
-                let dateToPass = hour + ":" + min + ". "
+                let dateToPass = hour + ":" + min + " "
                 let fullDateToPass = dateToPass + day + "/" + month + "/" + year
                 
                 self.users[index.row].invitedAt.append(self.navItem.title! + " At: \(fullDateToPass)")
